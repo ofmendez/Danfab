@@ -33,6 +33,7 @@ public class CustomErrorListener : DiagnosticErrorListener
     {
         _errorMessages.Add(string.Format("line {0}:{1} {2} at: {3}", line, charPositionInLine, msg, offendingSymbol.Text));
         Debug.Log(string.Format("line {0}:{1} {2} at: {3}", line, charPositionInLine, msg, offendingSymbol.Text));
+        MyConsole.main.AppendText(string.Format("line {0}:{1} {2} at: {3}", line, charPositionInLine, msg, offendingSymbol.Text));
     }
 
 
@@ -42,6 +43,7 @@ public class CustomErrorListener : DiagnosticErrorListener
         {
             _warningMessages.Add(string.Format("reportAmbiguity d={0}: ambigAlts={1}, input='{2}'", GetDecisionDescription(recognizer, dfa), GetConflictingAlts(ambigAlts, configs), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
             Debug.Log(string.Format("reportAmbiguity d={0}: ambigAlts={1}, input='{2}'", GetDecisionDescription(recognizer, dfa), GetConflictingAlts(ambigAlts, configs), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
+            MyConsole.main.AppendText(string.Format("reportAmbiguity d={0}: ambigAlts={1}, input='{2}'", GetDecisionDescription(recognizer, dfa), GetConflictingAlts(ambigAlts, configs), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
         }
     }
 
@@ -51,6 +53,7 @@ public class CustomErrorListener : DiagnosticErrorListener
         {
             _warningMessages.Add(string.Format("reportAttemptingFullContext d={0}, input='{1}'", GetDecisionDescription(recognizer, dfa), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
             Debug.Log(string.Format("reportAttemptingFullContext d={0}, input='{1}'", GetDecisionDescription(recognizer, dfa), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
+            MyConsole.main.AppendText(string.Format("reportAttemptingFullContext d={0}, input='{1}'", GetDecisionDescription(recognizer, dfa), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
         }
     }
 
@@ -60,6 +63,7 @@ public class CustomErrorListener : DiagnosticErrorListener
         {
             _warningMessages.Add(string.Format("reportContextSensitivity d={0}, input='{1}'", GetDecisionDescription(recognizer, dfa), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
             Debug.Log(string.Format("reportContextSensitivity d={0}, input='{1}'", GetDecisionDescription(recognizer, dfa), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
+            MyConsole.main.AppendText(string.Format("reportContextSensitivity d={0}, input='{1}'", GetDecisionDescription(recognizer, dfa), ((ITokenStream)recognizer.InputStream).GetText(Interval.Of(startIndex, stopIndex))));
         }
     }
 }

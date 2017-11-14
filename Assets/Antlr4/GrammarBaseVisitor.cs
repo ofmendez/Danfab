@@ -269,7 +269,8 @@ public partial class GrammarBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// <return>The visitor result.</return>
 	public virtual Result VisitBody_regularEpsilon([NotNull] GrammarParser.Body_regularEpsilonContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="GrammarParser.body_return"/>.
+	/// Visit a parse tree produced by the <c>body_returnBody</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -277,7 +278,62 @@ public partial class GrammarBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitBody_return([NotNull] GrammarParser.Body_returnContext context) { return VisitChildren(context); }
+	public virtual Result VisitBody_returnBody([NotNull] GrammarParser.Body_returnBodyContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_returnIfReturn</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_returnIfReturn([NotNull] GrammarParser.Body_returnIfReturnContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_returnSwitchReturn</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_returnSwitchReturn([NotNull] GrammarParser.Body_returnSwitchReturnContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_returWhileReturn</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_returWhileReturn([NotNull] GrammarParser.Body_returWhileReturnContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_returnReturnregular</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_returnReturnregular([NotNull] GrammarParser.Body_returnReturnregularContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_returnEpsilon</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_returnEpsilon([NotNull] GrammarParser.Body_returnEpsilonContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="GrammarParser.return_regular"/>.
 	/// <para>
@@ -289,7 +345,8 @@ public partial class GrammarBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// <return>The visitor result.</return>
 	public virtual Result VisitReturn_regular([NotNull] GrammarParser.Return_regularContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="GrammarParser.body_break_continue"/>.
+	/// Visit a parse tree produced by the <c>body_BC_Body</c>
+	/// labeled alternative in <see cref="GrammarParser.body_break_continue"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -297,9 +354,10 @@ public partial class GrammarBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitBody_break_continue([NotNull] GrammarParser.Body_break_continueContext context) { return VisitChildren(context); }
+	public virtual Result VisitBody_BC_Body([NotNull] GrammarParser.Body_BC_BodyContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="GrammarParser.body_return_break_continue"/>.
+	/// Visit a parse tree produced by the <c>body_BC_IfBC</c>
+	/// labeled alternative in <see cref="GrammarParser.body_break_continue"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -307,7 +365,128 @@ public partial class GrammarBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitBody_return_break_continue([NotNull] GrammarParser.Body_return_break_continueContext context) { return VisitChildren(context); }
+	public virtual Result VisitBody_BC_IfBC([NotNull] GrammarParser.Body_BC_IfBCContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_BC_SwitchBC</c>
+	/// labeled alternative in <see cref="GrammarParser.body_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_BC_SwitchBC([NotNull] GrammarParser.Body_BC_SwitchBCContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_BC_WhileRegular</c>
+	/// labeled alternative in <see cref="GrammarParser.body_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_BC_WhileRegular([NotNull] GrammarParser.Body_BC_WhileRegularContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_BC_BC</c>
+	/// labeled alternative in <see cref="GrammarParser.body_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_BC_BC([NotNull] GrammarParser.Body_BC_BCContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_BC_Epsilon</c>
+	/// labeled alternative in <see cref="GrammarParser.body_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_BC_Epsilon([NotNull] GrammarParser.Body_BC_EpsilonContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_Body</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_Body([NotNull] GrammarParser.Body_RBC_BodyContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_IfRBC</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_IfRBC([NotNull] GrammarParser.Body_RBC_IfRBCContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_SwitchRBC</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_SwitchRBC([NotNull] GrammarParser.Body_RBC_SwitchRBCContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_WhileReturn</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_WhileReturn([NotNull] GrammarParser.Body_RBC_WhileReturnContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_BC</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_BC([NotNull] GrammarParser.Body_RBC_BCContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_Return</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_Return([NotNull] GrammarParser.Body_RBC_ReturnContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>body_RBC_Epsilon</c>
+	/// labeled alternative in <see cref="GrammarParser.body_return_break_continue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBody_RBC_Epsilon([NotNull] GrammarParser.Body_RBC_EpsilonContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="GrammarParser.expression"/>.
 	/// <para>

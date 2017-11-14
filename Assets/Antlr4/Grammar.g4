@@ -32,8 +32,6 @@ arraysize
 ;
 
 
-
-
 if_regular
 : 'si' expression 'entonces' body_regular ( 'o_si' expression 'entonces' body_regular  )*  ('sino' body_regular )? 'fin'
 ;
@@ -52,11 +50,9 @@ if_return_break_continue
 ;
 
 
-
 switch_regular
 : 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_regular )+ ('sino'  body_regular )? 'fin'
 ;
-
 
 switch_return
 : 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return )+ ('sino'  body_return )? 'fin'
@@ -105,12 +101,12 @@ body_regular
 ;
 
 body_return
-: body 			 		body_return
-| if_return	  	 		body_return
-| switch_return	 		body_return
-| while_return	 		body_return
-| return_regular ';'	body_return
-|
+: body 			 		body_return		#body_returnBody
+| if_return	  	 		body_return		#body_returnIfReturn
+| switch_return	 		body_return		#body_returnSwitchReturn
+| while_return	 		body_return		#body_returWhileReturn
+| return_regular    	body_return		#body_returnReturnregular
+|										#body_returnEpsilon
 ;
 
 
@@ -121,23 +117,23 @@ return_regular
 
 
 body_break_continue
-: body 					         	  body_break_continue
-| if_break_continue	  	         	  body_break_continue
-| switch_break_continue	         	  body_break_continue
-| while_regular	 		         	  body_break_continue
-| bc=('interrumpir'|'continuar') ';'  body_break_continue
-|
+: body 					         	  body_break_continue	#body_BC_Body
+| if_break_continue	  	         	  body_break_continue	#body_BC_IfBC
+| switch_break_continue	         	  body_break_continue	#body_BC_SwitchBC
+| while_regular	 		         	  body_break_continue	#body_BC_WhileRegular
+| bc=('interrumpir'|'continuar')      body_break_continue	#body_BC_BC
+|															#body_BC_Epsilon
 ;
 
 
 body_return_break_continue
-: body 					 		body_return_break_continue
-| if_return_break_continue	  	body_return_break_continue
-| switch_return_break_continue	body_return_break_continue
-| while_return	 				body_return_break_continue
-| bc=('break'|'continue') ';'	body_return_break_continue
-| return_regular 	';'	 		body_return_break_continue
-|
+: body 					 		body_return_break_continue 	#body_RBC_Body
+| if_return_break_continue	  	body_return_break_continue 	#body_RBC_IfRBC
+| switch_return_break_continue	body_return_break_continue 	#body_RBC_SwitchRBC
+| while_return	 				body_return_break_continue 	#body_RBC_WhileReturn
+| bc=('break'|'continue') 	    body_return_break_continue 	#body_RBC_BC
+| return_regular 		 		body_return_break_continue 	#body_RBC_Return
+|															#body_RBC_Epsilon
 ;
 
 expression :   expressionContent   ;

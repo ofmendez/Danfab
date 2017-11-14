@@ -14,7 +14,7 @@ public class Main : MonoBehaviour {
 
 
 	public void EvalCode(Text textObj){
-	
+		
 		CustomErrorListener errorListener = new CustomErrorListener(false);
 		AntlrInputStream inputStream = new AntlrInputStream(textObj.text);
 	    GrammarLexer GrammarLexer = new GrammarLexer(inputStream);
