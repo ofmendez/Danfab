@@ -26,13 +26,25 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 	
 	object Exist (string id){
-		foreach(Dictionary<string, Instance> d in queue){
+		foreach(Dictionary<string, Instance> d in queue.Reverse()){
 			if( d.ContainsKey(id) )
 				return   d[id];
 		}
 		Debug.LogError("Variable "+id+" no existe en ningún contexto.");
 		MyConsole.main.AppendText("Variable "+id+" no existe en ningún contexto.");
 		return null;
+	}
+
+	string PrintQueue(LinkedList<Dictionary<string, Instance>> Q){
+		string result = "";
+		foreach (Dictionary<string, Instance> D in Q) {
+			foreach(KeyValuePair<string, Instance> entry in D) {
+			   	result += (" ["+entry.Key+" , "+entry.Value+"] ");
+			   	 // do something with entry.Value or entry.Key
+			}
+		   	result += (" ## ");
+		}	
+		return result;
 	}
 
 	public override object VisitPrint(GrammarParser.PrintContext context){
@@ -171,8 +183,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 		switch (context.RELATIONAL().GetText() ) {
 		    case "menorque":
-		    	if(areNums)
+		    	if(areNums){
 		    		result = Convert.ToDouble(left) < Convert.ToDouble(right);
+		    	}
 		    	else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) < 0;
 	    		else {
@@ -362,6 +375,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 						memAmbit.Add(func.namesParams.ElementAt(i), xvar);
 					}
 					queue.AddLast(memAmbit);
+					// Tebug.Log("queue: "+ PrintQueue(queue)) ;
 					object res = Visit((IParseTree) func.instructions);
 					// Tebug.Log(" EVALUADO 3 : " + (string)res);
 					queue.RemoveLast();
@@ -423,29 +437,64 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 	public override object VisitIf_regular(GrammarParser.If_regularContext context){
 		int nExpressions = context.expression().Length;
-		
+		bool thrown = false;
 		for (int i = 0; i < nExpressions; i++){
 			object valueExp = VisitExpression( context.expression(i) );
 			if (getType(valueExp) == 0){
 				if ((bool) valueExp){
 					Visit(context.body_regular(i));
+					thrown = true;
 					break;
 				}
-				else if (context.body_regular().Length > nExpressions){
-					Visit(context.body_regular(context.body_regular().Length - 1));
+			}else{
+				Debug.LogError("La expresión a evaluar debe ser booleana");	
+				MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+				break;
+			}	
+		}
+		if (context.body_regular().Length > nExpressions && !thrown){
+			Visit(context.body_regular(context.body_regular().Length - 1));
+		}
+		return null;
+	}
+
+	// public override object VisitSwitch_regular(GrammarParser.Switch_regularContext context){
+		//TODO cambiar el 'entonce' 
+	// }
+
+	public override object VisitIf_return(GrammarParser.If_returnContext context){
+		int nExpressions = context.expression().Length;
+		object result = null;
+		bool thrown = false;
+		for (int i = 0; i < nExpressions; i++){
+			object valueExp = VisitExpression( context.expression(i) );
+			if (getType(valueExp) == 0){
+				if ((bool) valueExp){
+					result = Visit(context.body_return(i));
+					thrown = true;
 					break;
 				}
 
 			}else{
 				Debug.LogError("La expresión a evaluar debe ser booleana");	
 				MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+				break;
 			}	
 		}
-		return null;
+		if (context.body_return().Length > nExpressions && !thrown){
+			result = Visit(context.body_return(context.body_return().Length - 1));
+		}
+		return result;
 	}
-	
-	
-	
+
+
+	public override object VisitBody_returnIfReturn(GrammarParser.Body_returnIfReturnContext context){
+		object result = VisitIf_return(context.if_return());
+		if ( result == null){
+			result = Visit(context.body_return());
+		}
+		return result;
+	}
 }
 
 
