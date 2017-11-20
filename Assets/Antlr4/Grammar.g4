@@ -2,6 +2,7 @@ grammar Grammar;
 
 principal : block ;
 
+
 block
 : body 				block					
 | function 			block				
@@ -17,6 +18,7 @@ function_call
 | 'usa' ID expression (',' expression)*
 ;
 
+
 arrayPosition
 : ID 'en' expression
 ;
@@ -25,7 +27,6 @@ arrayPosition
 print 
 : '_print' expression 
 ;
-
 
 arraysize
 : '_sizeof' ID 
@@ -51,21 +52,21 @@ if_return_break_continue
 
 
 switch_regular
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_regular )+ ('sino'  body_regular )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_regular )+ ('sino'  body_regular )? 'fin'
 ;
 
 switch_return
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return )+ ('sino'  body_return )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_return )+ ('sino'  body_return )? 'fin'
 ;
 
 
 switch_break_continue
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_break_continue )+ ('sino'  body_break_continue )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_break_continue )+ ('sino'  body_break_continue )? 'fin'
 ;
 
 
 switch_return_break_continue
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return_break_continue )+ ('sino'  body_return_break_continue )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_return_break_continue )+ ('sino'  body_return_break_continue )? 'fin'
 ;
 
 
@@ -76,8 +77,6 @@ while_regular
 while_return
 : 'mientras'  expression   'entonces' body_return_break_continue 'fin'
 ;
-
-
 
 function
 :  ID 'usa' 'nada'  'como'  body_return 'fin'
@@ -100,6 +99,7 @@ body_regular
 |									#body_regularEpsilon
 ;
 
+
 body_return
 : body 			 		body_return		#body_returnBody
 | if_return	  	 		body_return		#body_returnIfReturn
@@ -121,9 +121,10 @@ body_break_continue
 | if_break_continue	  	         	  body_break_continue	#body_BC_IfBC
 | switch_break_continue	         	  body_break_continue	#body_BC_SwitchBC
 | while_regular	 		         	  body_break_continue	#body_BC_WhileRegular
-| bc=('interrumpir'|'continuar')      body_break_continue	#body_BC_BC
+| bc=('interrumpir'|'saltar')      body_break_continue	#body_BC_BC
 |															#body_BC_Epsilon
 ;
+
 
 
 body_return_break_continue
@@ -131,7 +132,7 @@ body_return_break_continue
 | if_return_break_continue	  	body_return_break_continue 	#body_RBC_IfRBC
 | switch_return_break_continue	body_return_break_continue 	#body_RBC_SwitchRBC
 | while_return	 				body_return_break_continue 	#body_RBC_WhileReturn
-| bc=('break'|'continue') 	    body_return_break_continue 	#body_RBC_BC
+| bc=('interrumpir'|'saltar') 	    body_return_break_continue 	#body_RBC_BC
 | return_regular 		 		body_return_break_continue 	#body_RBC_Return
 |															#body_RBC_Epsilon
 ;
@@ -200,3 +201,4 @@ NEGATIVE :  '-'	 ;
 
 WS		: [ \t\r\n]+ -> skip ;
 ErrorChar : . ;
+
