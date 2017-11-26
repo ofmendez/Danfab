@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using System.Linq;
 using System.Runtime.InteropServices;
 using Antlr4.Runtime.Tree;
+using UnityEngine;
 
 using Utils;
 
@@ -32,9 +33,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 			if( d.ContainsKey(id) )
 				return   d[id];
 		}
-		// Debug.LogError("Variable "+id+" no existe en ningún contexto.");
-		Console.WriteLine("Variable "+id+" no existe en ningún contexto.");
-		// MyConsole.main.AppendText("Variable "+id+" no existe en ningún contexto.");
+		Debug.LogError("Variable "+id+" no existe en ningún contexto.");
+		// Console.WriteLine("Variable "+id+" no existe en ningún contexto.");
+		MyConsole.main.AppendText("Variable "+id+" no existe en ningún contexto.");
 		return null;
 	}
 
@@ -59,9 +60,17 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 	public override object VisitPrint(GrammarParser.PrintContext context){
-		// Debug.Log(Visit(context.expression()));
-		Console.WriteLine(Visit(context.expression()));
-		// MyConsole.main.AppendText(""+Visit(context.expression())); 
+
+		object toPrint = Visit(context.expression());
+		if(toPrint is bool){
+			// Console.WriteLine((bool)toPrint?"verdadero":"falso");
+			Debug.Log( ((bool)toPrint)?"verdadero":"falso");
+			MyConsole.main.AppendText(""+  ( ((bool)toPrint)?"verdadero":"falso") ); 
+		}else{
+			// Console.WriteLine(toPrint);
+ 			Debug.Log( toPrint);
+			MyConsole.main.AppendText(""+toPrint); 
+		}
 		return null;
 	}
 
@@ -96,28 +105,41 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	// ARRAYS
 	//######################
 
-	public override object VisitArrayPosition(GrammarParser.ArrayPositionContext context)
-	{
+	public override object VisitArrayPosition(GrammarParser.ArrayPositionContext context){
 		object result = null;
 		string id = context.ID().GetText();
 		object position = VisitExpression(context.expression());
-		if (position is int)
-		{
-			//TODO: obtener la posicion del array
+		object arr = ExistInLast(id);
+		if (arr is MyArray) {
+
+			if (position is int) {
+				result = ((MyArray) arr).getValue((int)position);
+			}
+			else {
+				//			Debug.LogError("Debe consultarse con un tipo de dato entero");
+				Console.WriteLine("Debe consultarse con un tipo de dato entero");
+				//			MyConsole.main("Debe consultarse con un tipo de dato entero");
+			}
 		}
-		else
-		{
-//			Debug.LogError("Debe consultarse con un tipo de dato entero");
-			Console.WriteLine("Debe consultarse con un tipo de dato entero");
-//			MyConsole.main("Debe consultarse con un tipo de dato entero");
+		else {
+			//			Debug.LogError("Este identificador no es de un Array o no está declarado");
+			Console.WriteLine("Este identificador no es de un Array o no está declarado");
+			//			MyConsole.main("Este identificador no es de un Array o no está declarado");
 		}
 		return result;
 	}
 
-	public override object VisitArraysize(GrammarParser.ArraysizeContext context)
-	{
+	public override object VisitArraysize(GrammarParser.ArraysizeContext context){
 		object result = null;
-
+		string id = context.ID().GetText();
+		object arr = ExistInLast(id);
+		if (arr is MyArray){
+			result = ((MyArray) arr).getSize();
+		}
+		//			Debug.LogError(id+" no ha sidop declarado");
+		Console.WriteLine(id+" no ha sidop declarado");
+		//			MyConsole.main(id+" no ha sidop declarado");
+		
 		return result;
 
 	}
@@ -140,16 +162,16 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 		object result = null;
 		if (left is bool   || right is bool){
-			// Debug.LogError("No es posible aplicar el símbolo"+(isSum? "+":"-")+"a un booleano");
-			Console.WriteLine("No es posible aplicar el símbolo"+(isSum? "+":"-")+"a un booleano");
-			// MyConsole.main.AppendText("No es posible aplicar el símbolo"+(isSum? "+":"-")+"a un booleano");
+			Debug.LogError("No es posible aplicar el símbolo"+(isSum? "+":"-")+"a un booleano");
+			// Console.WriteLine("No es posible aplicar el símbolo"+(isSum? "+":"-")+"a un booleano");
+			MyConsole.main.AppendText("No es posible aplicar el símbolo"+(isSum? "+":"-")+"a un booleano");
 			return null;
 		}
 		if (left is string || right is string){
 			if (!isSum){
-				// Debug.LogError("No es posible aplicar el operador - a strings");
-				Console.WriteLine("No es posible aplicar el operador - a strings");
-				// MyConsole.main.AppendText("No es posible aplicar el operador - a strings");
+				Debug.LogError("No es posible aplicar el operador - a strings");
+				// Console.WriteLine("No es posible aplicar el operador - a strings");
+				MyConsole.main.AppendText("No es posible aplicar el operador - a strings");
 			}else
 				result = left.ToString() + right.ToString();
 		}else{
@@ -158,9 +180,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 			else if (left is int || right is int)
 				result = isSum? (int) left + (int) right :(int) left - (int) right;
 			else{
-				// Debug.LogError("Llegaron valores de tipo desconocido");
-				Console.WriteLine("Llegaron valores de tipo desconocido");
-				// MyConsole.main.AppendText("Llegaron valores de tipo desconocido");
+				Debug.LogError("Llegaron valores de tipo desconocido");
+				// Console.WriteLine("Llegaron valores de tipo desconocido");
+				MyConsole.main.AppendText("Llegaron valores de tipo desconocido");
 			}
 		}
 
@@ -172,18 +194,25 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		if ( value is bool)
 			return  ! (bool) value ;
 
-		// Debug.LogError("Operador ! sólo es aplicable a booleano");
-		Console.WriteLine("Operador ! sólo es aplicable a booleano");
-		// MyConsole.main.AppendText("Operador ! sólo es aplicable a booleano");
+		Debug.LogError("Operador ! sólo es aplicable a booleano");
+		// Console.WriteLine("Operador ! sólo es aplicable a booleano");
+		MyConsole.main.AppendText("Operador ! sólo es aplicable a booleano");
 		return null;
 	}
 
 	public override object VisitExpressionContentID(GrammarParser.ExpressionContentIDContext context){
 		string id = context.ID().GetText();
-		if (Exist(id) is MyVariable){
-			return ((MyVariable) Exist(id)).value;
+		object var = ExistInLast(id);
+		if (var is MyVariable){
+			return ((MyVariable) var).value;
 		}
-		return base.VisitExpressionContentID(context);
+		if (var is MyArray){
+			return ((MyArray) var).ToString();
+		}
+		Debug.LogError("No se ha declarado esta variable o arreglo(id)");
+		// Console.WriteLine("No se ha declarado esta variable o arreglo(id)");
+		MyConsole.main.AppendText("No se ha declarado esta variable o arreglo(id)");
+		return null;
 	}
 
 	public override object VisitExpressionContentParenthesis(GrammarParser.ExpressionContentParenthesisContext context){
@@ -198,9 +227,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		if (expToNegate is int)
 			result = - (int)expToNegate;
 		if (expToNegate is string || expToNegate is bool){
-			// Debug.LogError("No es posible aplicar el operador - a string o bool");
-			Console.WriteLine("No es posible aplicar el operador - a string o bool");
-			// MyConsole.main.AppendText("No es posible aplicar el operador - a string o bool");
+			Debug.LogError("No es posible aplicar el operador - a string o bool");
+			// Console.WriteLine("No es posible aplicar el operador - a string o bool");
+			MyConsole.main.AppendText("No es posible aplicar el operador - a string o bool");
 		}
 
 		return result;
@@ -215,7 +244,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		bool areNums = leftIsNum &&  rigthIsNum;
 		bool areStrgs = left is string &&  right is string;
 
-		object result  =  null;
+		object result  =  false;
 
 		switch (context.RELATIONAL().GetText() ) {
 		    case "menorque":
@@ -225,9 +254,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		    	else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) < 0;
 	    		else {
-	    			// Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			// MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de datos: "+getType(left)+" contra "+getType(right));
+	    			// Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de datos: "+getType(left)+" contra "+getType(right));
+	    			MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de datos: "+getType(left)+" contra "+getType(right));
 	    		}
 		      	break;
 		    case "menorigual":
@@ -236,20 +265,21 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	    		else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) <= 0;
 	    		else {
-	    			// Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			// MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			// Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
 	    		}
 		      	break;
 		    case "mayorque":
-		    	if(areNums)
-		    		result = Convert.ToDouble(left) > Convert.ToDouble(right);
+		    	if(areNums){
+		    		result =  (bool)(Convert.ToDouble(left) > Convert.ToDouble(right) );
+		    	}
 	    		else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) > 0;
 	    		else {
-	    			// Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			// MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			// Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
 	    		}
 		      	break;
 		    case "mayorigual":
@@ -258,9 +288,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	    		else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) >= 0;
 	    		else {
-	    			// Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			// MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			// Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
 	    		}
 		     	break;
 		}
@@ -286,9 +316,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		    	else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) < 0;
 	    		else {
-	    			// Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			// MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			// Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
 	    		}
 		      	break;
 		    case "diferente":
@@ -297,9 +327,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	    		else if(areStrgs)
 		    		result = String.Compare(left.ToString(), right.ToString()) <= 0;
 	    		else {
-	    			// Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
-	    			// MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			Debug.LogError("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			// Console.WriteLine("No es posible hacer esta operacion relacional entre estos tipos de dato");
+	    			MyConsole.main.AppendText("No es posible hacer esta operacion relacional entre estos tipos de dato");
 	    		}
 		      	break;
 		}
@@ -315,9 +345,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		if (left is bool && right is bool)
 			result = (bool) left && (bool) right;
 		else{
-			// Debug.LogError("No se puede aplicar && a tipos no booleanos");
-			Console.WriteLine("No se puede aplicar && a tipos no booleanos");
-			// MyConsole.main.AppendText("No se puede aplicar && a tipos no booleanos");
+			Debug.LogError("No se puede aplicar && a tipos no booleanos");
+			// Console.WriteLine("No se puede aplicar && a tipos no booleanos");
+			MyConsole.main.AppendText("No se puede aplicar && a tipos no booleanos");
 		}
 
 		return result;
@@ -332,9 +362,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		if (left is bool && right is bool)
 			result = (bool) left || (bool) right;
 		else{
-			// Debug.LogError("No se puede aplicar && a tipos no booleanos");
-			Console.WriteLine("No se puede aplicar && a tipos no booleanos");
-			// MyConsole.main.AppendText("No se puede aplicar && a tipos no booleanos");
+			Debug.LogError("No se puede aplicar && a tipos no booleanos");
+			// Console.WriteLine("No se puede aplicar && a tipos no booleanos");
+			MyConsole.main.AppendText("No se puede aplicar && a tipos no booleanos");
 		}
 
 		return result;
@@ -355,9 +385,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		bool areStringMul = (left is int && right is string) || (left is string && right  is int) ;
 
 		if (isDiv && rigthIsNum && Convert.ToDouble(right) == 0 ){
-			// Debug.LogError("Error en división por cero");
-			Console.WriteLine("Error en división por cero");
-			// MyConsole.main.AppendText("Error en división por cero");
+			Debug.LogError("Error en división por cero");
+			// Console.WriteLine("Error en división por cero");
+			MyConsole.main.AppendText("Error en división por cero");
 			return null;
 		}
 
@@ -380,6 +410,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return VisitFunction_call(context.function_call());
 	}
 
+	
 	//TODO : expresionContentArrayPosition
 	
 	//######################
@@ -427,14 +458,14 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					queue.RemoveLast();
 					return res == null ? (object) "nada" : res;
 				}else{
-					// Debug.LogError("Esta funcion recibe un número diferente de parametros");
-					Console.WriteLine("Esta funcion recibe un número diferente de parametros");
-					// MyConsole.main.AppendText("Esta funcion recibe un número diferente de parametros");
+					Debug.LogError("Esta funcion recibe un número diferente de parametros");
+					// Console.WriteLine("Esta funcion recibe un número diferente de parametros");
+					MyConsole.main.AppendText("Esta funcion recibe un número diferente de parametros");
 				}
 			} else{
-				// Debug.LogError("Este ID no pertenece a una funcion");
-				Console.WriteLine("Este ID no pertenece a una funcion");
-				// MyConsole.main.AppendText("Este ID no pertenece a una funcion");
+				Debug.LogError("Este ID no pertenece a una funcion");
+				// Console.WriteLine("Este ID no pertenece a una funcion");
+				MyConsole.main.AppendText("Este ID no pertenece a una funcion");
 			}
 		} else{
 			if (instance is MyFunction){
@@ -448,15 +479,15 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					return res == null ? (object) "nada" : res;
 				}
 				else{
-					// Debug.LogError("Se esperaban cero parametros para esta func.");
-					Console.WriteLine("Se esperaban cero parametros para esta func.");
-					// MyConsole.main.AppendText("Se esperaban cero parametros para esta func.");
+					Debug.LogError("Se esperaban cero parametros para esta func.");
+					// Console.WriteLine("Se esperaban cero parametros para esta func.");
+					MyConsole.main.AppendText("Se esperaban cero parametros para esta func.");
 				}
 			}
 			else{
-				// Debug.LogError("No ha sido declarada una funcion con este nombre");
-				Console.WriteLine("No ha sido declarada una funcion con este nombre");
-				// MyConsole.main.AppendText("No ha sido declarada una funcion con este nombre");
+				Debug.LogError("No ha sido declarada una funcion con este nombre");
+				// Console.WriteLine("No ha sido declarada una funcion con este nombre");
+				MyConsole.main.AppendText("No ha sido declarada una funcion con este nombre");
 			}
 		}
 
@@ -487,9 +518,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					break;
 				}
 			}else{
-				// Debug.LogError("La expresión a evaluar debe ser booleana");
-				Console.WriteLine("La expresión a evaluar debe ser booleana");
-				// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+				Debug.LogError("La expresión a evaluar debe ser booleana");
+				// Console.WriteLine("La expresión a evaluar debe ser booleana");
+				MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
 				break;
 			}
 		}
@@ -513,9 +544,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 				}
 
 			}else{
-				// Debug.LogError("La expresión a evaluar debe ser booleana");
-				Console.WriteLine("La expresión a evaluar debe ser booleana");
-				// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+				Debug.LogError("La expresión a evaluar debe ser booleana");
+				// Console.WriteLine("La expresión a evaluar debe ser booleana");
+				MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
 				break;
 			}
 		}
@@ -541,9 +572,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 				}
 
 			}else{
-				// Debug.LogError("La expresión a evaluar debe ser booleana");
-				Console.WriteLine("La expresión a evaluar debe ser booleana");
-				// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+				Debug.LogError("La expresión a evaluar debe ser booleana");
+				// Console.WriteLine("La expresión a evaluar debe ser booleana");
+				MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
 				break;
 			}
 		}
@@ -569,9 +600,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 				}
 
 			}else{
-				// Debug.LogError("La expresión a evaluar debe ser booleana");
-				Console.WriteLine("La expresión a evaluar debe ser booleana");
-				// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+				Debug.LogError("La expresión a evaluar debe ser booleana");
+				// Console.WriteLine("La expresión a evaluar debe ser booleana");
+				MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
 				break;
 			}
 		}
@@ -630,12 +661,13 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					result = Visit(context.body_return(i));
 					thrown = true;
 					break;
-				}else{
-					// Debug.LogError("La expresión a evaluar debe ser booleana");
-					Console.WriteLine("La expresión a evaluar debe ser booleana");
-					// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
-					break;
 				}
+//				else{
+//					Debug.LogError("La expresión a evaluar debe ser booleana");
+//					// Console.WriteLine("La expresión a evaluar debe ser booleana");
+//					MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+//					break;
+//				}
 			}
 			if (context.body_return().Length > nCases && !thrown){
 				result = Visit(context.body_return(context.body_return().Length - 1));
@@ -660,12 +692,13 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					result = Visit(context.body_break_continue(i));
 					thrown = true;
 					break;
-				}else{
-					// Debug.LogError("La expresión a evaluar debe ser booleana");
-					Console.WriteLine("La expresión a evaluar debe ser booleana");
-					// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
-					break;
 				}
+//				else{
+//					Debug.LogError("La expresión a evaluar debe ser booleana");
+//					// Console.WriteLine("La expresión a evaluar debe ser booleana");
+//					MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+//					break;
+//				}
 			}
 			if (context.body_break_continue().Length > nCases && !thrown){
 				result = Visit(context.body_break_continue(context.body_break_continue().Length - 1));
@@ -689,12 +722,13 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					result = Visit(context.body_return_break_continue(i));
 					thrown = true;
 					break;
-				}else{
-					// Debug.LogError("La expresión a evaluar debe ser booleana");
-					Console.WriteLine("La expresión a evaluar debe ser booleana");
-					// MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
-					break;
 				}
+//				else{
+//					Debug.LogError("La expresión a evaluar debe ser booleana");
+//					// Console.WriteLine("La expresión a evaluar debe ser booleana");
+//					MyConsole.main.AppendText("La expresión a evaluar debe ser booleana");	
+//					break;
+//				}
 			}
 			if (context.body_return_break_continue().Length > nCases && !thrown){
 				result = Visit(context.body_return_break_continue(context.body_return_break_continue().Length - 1));
@@ -709,7 +743,8 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	public override object VisitWhile_regular(GrammarParser.While_regularContext context)
 	{
 		object valueExp = VisitExpression( context.expression() );
-
+		int limit = 500;
+		int cicles = 0;
 		if (valueExp is bool)
 		{
 
@@ -729,13 +764,18 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 					}
 				}
 				valueExp = VisitExpression( context.expression() );
+				cicles++;
+				if(cicles > limit){
+					break;
+				}
 			}
 
 		}
 		else
 		{
-			// Debug.LogError("No es una expresion booleana para while");
-			Console.WriteLine("No es una expresion booleana para while");
+			Debug.LogError("No es una expresion booleana para while");
+			// Console.WriteLine("No es una expresion booleana para while");
+			MyConsole.main.AppendText("No es una expresion booleana para while");
 		}
 		return null;
 	}
@@ -767,8 +807,9 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		}
 		else
 		{
-			// Debug.LogError("No es una expresion booleana para while");
-			Console.WriteLine("No es una expresion booleana para while");
+			Debug.LogError("No es una expresion booleana para while.(r)");
+			// Console.WriteLine("No es una expresion booleana para while.(r)");
+			MyConsole.main.AppendText("No es una expresion booleana para while.(r)");
 		}
 		return null;
 	}
@@ -776,37 +817,99 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	//######################
 	// BODIES
 	//######################
-	
-	public override object VisitBody(GrammarParser.BodyContext context){
-		if (context.print() != null){
-			VisitPrint(context.print());
-		}else if (context.function_call() != null){
-			VisitFunction_call(context.function_call());
-		}else if (context.expression() != null){
-			// Teb ug.Log("v ASIGNAR VARIABLE");
-			string id = context.ID().GetText();
-			object value = VisitExpression(context.expression());
-			MyVariable var = new MyVariable(id, getType(value),value);
-			object varExist = ExistInLast(id);
-			if (varExist != null)
-			{
-				if (!(varExist is MyFunction))
-				{
-					queue.Last()[id] = var;
-				}
+
+
+	public override object VisitBodyPrint(GrammarParser.BodyPrintContext context){
+		VisitPrint(context.print());
+		return null;
+	}
+
+	public override object VisitBodyFunctionCall(GrammarParser.BodyFunctionCallContext context){
+		VisitFunction_call(context.function_call());
+		return null;
+	}
+
+	public override object VisitBodyAssignVariable(GrammarParser.BodyAssignVariableContext context){
+		string id = context.ID().GetText();
+		object value = VisitExpression(context.expression());
+		MyVariable var = new MyVariable(id, getType(value),value);
+		object varExist = ExistInLast(id);
+		if (varExist != null){
+			if (!(varExist is MyFunction)){
+				queue.Last()[id] = var;
 			}
-			else
-			{
-				queue.Last().Add(id,var);
+			else{
+				Debug.LogError("Este identificador ya ha sido asignado a una funcion");
+				// Console.WriteLine("Este identificador ya ha sido asignado a una funcion");
+				MyConsole.main.AppendText("Este identificador ya ha sido asignado a una funcion");
 			}
 		}
+		else{
+			queue.Last().Add(id,var);
+		}
+		return null;
+	}
 
+	public override object VisitBodyArrayPosition(GrammarParser.BodyArrayPositionContext context){
+		//Assign position of array
+		string id = context.ID().GetText();
+		object position = VisitExpression(context.expression(0));
+
+		if (!(position is int)){
+			position = 0;
+			Debug.LogError("La posición debe ser de tipo entero");
+			// Console.WriteLine("La posición debe ser de tipo entero");
+			MyConsole.main.AppendText("La posición debe ser de tipo entero");
+		}
+		else{
+			object value = VisitExpression(context.expression(1));
+			object arrExist = ExistInLast(id);
+			if (arrExist is MyArray){
+				((MyArray) arrExist).setValue((int)position, value);
+			}else{
+				Debug.LogError("Array con este identificador no ha sido declarado");
+				// Console.WriteLine("Array con este identificador no ha sido declarado");
+				MyConsole.main.AppendText("Array con este identificador no ha sido declarado");
+			}
+		}
 		return null;
 	}
 	
-	
+
+	public override object VisitBodyArrayDeclaration(GrammarParser.BodyArrayDeclarationContext context){
+		string id = context.ID().GetText();
+		
+//		int position = Convert.ToInt32( context.INTEGER().GetText() );
+		object size = VisitExpression(context.expression());
+		
+		if (size is int){
+			MyArray var = new MyArray(id, (int) size);
+			object varExist = ExistInLast(id);
+			if (varExist != null){
+				if (!(varExist is MyFunction)){
+					queue.Last()[id] = var;
+				}
+				else{
+					Debug.LogError("Este identificador ya ha sido asignado a una funcion");
+					// Console.WriteLine("Este identificador ya ha sido asignado a una funcion");
+					MyConsole.main.AppendText("Este identificador ya ha sido asignado a una funcion");
+				}
+			}
+			else{
+				queue.Last().Add(id, var);
+			}
+		}
+		else{			
+			Debug.LogError("El tamaño de la lista de be ser un entero");
+			// Console.WriteLine("El tamaño de la lista de be ser un entero");
+			MyConsole.main.AppendText("El tamaño de la lista de be ser un entero");
+		}		
+		return null;
+	}
+
+
 	public override object VisitBody_returnBody(GrammarParser.Body_returnBodyContext context){
-		VisitBody(context.body());
+		Visit(context.body());
 		return Visit(context.body_return());
 	}
 	
@@ -815,8 +918,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return VisitReturn_regular(context.return_regular());
 	}
 
-	public override object VisitBody_RBC_Return(GrammarParser.Body_RBC_ReturnContext context)
-	{
+	public override object VisitBody_RBC_Return(GrammarParser.Body_RBC_ReturnContext context) {
 		return VisitReturn_regular(context.return_regular());
 	}
 
@@ -843,13 +945,12 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		if ( result == null){
 			result = Visit(context.body_return_break_continue());
 		}
-//		Console.WriteLine("SE OBTUVO para body if RBC: "+result);
 		return result;
 	}
 
 	public override object VisitBody_BC_Body(GrammarParser.Body_BC_BodyContext context)
 	{	
-		object result = VisitBody(context.body());
+		object result = Visit(context.body());
 		if ( result == null){
 			result = Visit(context.body_break_continue());
 		}
@@ -887,7 +988,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 	public override object VisitBody_RBC_Body(GrammarParser.Body_RBC_BodyContext context)
 	{
-		object result = VisitBody(context.body());
+		object result = Visit(context.body());
 		if ( result == null){
 			result = Visit(context.body_return_break_continue());
 		}

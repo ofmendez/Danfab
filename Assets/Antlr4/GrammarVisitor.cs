@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /media/windows/Users/OFMendez/Mis documentos/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Grammar.g4 by ANTLR 4.7
+// Generated from /home/ofmendez/DataDocs/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Grammar.g4 by ANTLR 4.7
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -134,11 +134,40 @@ public interface IGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFunction([NotNull] GrammarParser.FunctionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="GrammarParser.body"/>.
+	/// Visit a parse tree produced by the <c>bodyPrint</c>
+	/// labeled alternative in <see cref="GrammarParser.body"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitBody([NotNull] GrammarParser.BodyContext context);
+	Result VisitBodyPrint([NotNull] GrammarParser.BodyPrintContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>bodyFunctionCall</c>
+	/// labeled alternative in <see cref="GrammarParser.body"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBodyFunctionCall([NotNull] GrammarParser.BodyFunctionCallContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>bodyAssignVariable</c>
+	/// labeled alternative in <see cref="GrammarParser.body"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBodyAssignVariable([NotNull] GrammarParser.BodyAssignVariableContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>bodyArrayPosition</c>
+	/// labeled alternative in <see cref="GrammarParser.body"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBodyArrayPosition([NotNull] GrammarParser.BodyArrayPositionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>bodyArrayDeclaration</c>
+	/// labeled alternative in <see cref="GrammarParser.body"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBodyArrayDeclaration([NotNull] GrammarParser.BodyArrayDeclarationContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>body_regularBody</c>
 	/// labeled alternative in <see cref="GrammarParser.body_regular"/>.
@@ -355,19 +384,19 @@ public interface IGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExpressionContentContentOr([NotNull] GrammarParser.ExpressionContentContentOrContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>expressionContentInput</c>
-	/// labeled alternative in <see cref="GrammarParser.expressionContent"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExpressionContentInput([NotNull] GrammarParser.ExpressionContentInputContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>expressionContentID</c>
 	/// labeled alternative in <see cref="GrammarParser.expressionContent"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpressionContentID([NotNull] GrammarParser.ExpressionContentIDContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>expressionContentArraySize</c>
+	/// labeled alternative in <see cref="GrammarParser.expressionContent"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExpressionContentArraySize([NotNull] GrammarParser.ExpressionContentArraySizeContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>expressionContentMul</c>
 	/// labeled alternative in <see cref="GrammarParser.expressionContent"/>.
@@ -423,10 +452,4 @@ public interface IGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitDataType([NotNull] GrammarParser.DataTypeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="GrammarParser.input"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitInput([NotNull] GrammarParser.InputContext context);
 }

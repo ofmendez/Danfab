@@ -9,7 +9,7 @@ public class  MyConsole : Singleton< MyConsole> {
 	public Text mText;
 
 	public void AppendText(string _t){
-		mText.text += "\n"+_t; 
+		mText.text += _t+"\n"; 
 	}
 
 	public void ClearText(){

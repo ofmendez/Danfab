@@ -2,7 +2,6 @@ grammar Grammar;
 
 principal : block ;
 
-
 block
 : body 				block					
 | function 			block				
@@ -12,12 +11,10 @@ block
 | 								
 ;
 
-
 function_call
 : 'usa' ID 'nada'
 | 'usa' ID expression (',' expression)*
 ;
-
 
 arrayPosition
 : ID 'en' expression
@@ -25,11 +22,13 @@ arrayPosition
 
 
 print 
-: '_print' expression 
+: 'imprima' expression 
 ;
 
+
+
 arraysize
-: '_sizeof' ID 
+: 'tamaño' 'de'  ID 
 ;
 
 
@@ -52,21 +51,21 @@ if_return_break_continue
 
 
 switch_regular
-: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_regular )+ ('sino'  body_regular )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_regular )+ ('sino'  body_regular )? 'fin'
 ;
 
 switch_return
-: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_return )+ ('sino'  body_return )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return )+ ('sino'  body_return )? 'fin'
 ;
 
 
 switch_break_continue
-: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_break_continue )+ ('sino'  body_break_continue )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_break_continue )+ ('sino'  body_break_continue )? 'fin'
 ;
 
 
 switch_return_break_continue
-: 'cuando'  ID  'escoge' ('case' dataType 'entonces' body_return_break_continue )+ ('sino'  body_return_break_continue )? 'fin'
+: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return_break_continue )+ ('sino'  body_return_break_continue )? 'fin'
 ;
 
 
@@ -78,6 +77,8 @@ while_return
 : 'mientras'  expression   'entonces' body_return_break_continue 'fin'
 ;
 
+
+
 function
 :  ID 'usa' 'nada'  'como'  body_return 'fin'
 |  ID 'usa' ID ( ',' ID  )*  'como'  body_return 'fin'
@@ -85,9 +86,11 @@ function
 
 
 body
-: print  			
-| function_call 
-| ID ':' expression
+: print  			                    #bodyPrint
+| function_call                         #bodyFunctionCall
+| ID ':' expression                     #bodyAssignVariable
+| ID 'en' expression ':'  expression    #bodyArrayPosition
+| 'lista' ID 'de' expression            #bodyArrayDeclaration
 ;
 
 
@@ -98,7 +101,6 @@ body_regular
 | while_regular 	body_regular 	#body_regularWhileRegular
 |									#body_regularEpsilon
 ;
-
 
 body_return
 : body 			 		body_return		#body_returnBody
@@ -121,10 +123,9 @@ body_break_continue
 | if_break_continue	  	         	  body_break_continue	#body_BC_IfBC
 | switch_break_continue	         	  body_break_continue	#body_BC_SwitchBC
 | while_regular	 		         	  body_break_continue	#body_BC_WhileRegular
-| bc=('interrumpir'|'saltar')      body_break_continue	#body_BC_BC
+| bc=('interrumpir'|'continuar')      body_break_continue	#body_BC_BC
 |															#body_BC_Epsilon
 ;
-
 
 
 body_return_break_continue
@@ -132,7 +133,7 @@ body_return_break_continue
 | if_return_break_continue	  	body_return_break_continue 	#body_RBC_IfRBC
 | switch_return_break_continue	body_return_break_continue 	#body_RBC_SwitchRBC
 | while_return	 				body_return_break_continue 	#body_RBC_WhileReturn
-| bc=('interrumpir'|'saltar') 	    body_return_break_continue 	#body_RBC_BC
+| bc=('interrumpir'|'continuar') 	    body_return_break_continue 	#body_RBC_BC
 | return_regular 		 		body_return_break_continue 	#body_RBC_Return
 |															#body_RBC_Epsilon
 ;
@@ -154,7 +155,8 @@ expressionContent
 |  ID 														#expressionContentID
 |  arrayPosition 											#expressionContentArrayPosition
 |  function_call 											#expressionContentFunctionCall
-|  input                                                    #expressionContentInput
+|  arraysize 												#expressionContentArraySize
+//|  input                                                    #expressionContentInput
 ;
 
 
@@ -166,9 +168,9 @@ dataType
 | FALSE
 ;
 
-input
-: 'entrada'  
-;
+//input
+//: 'entrada'  
+//;
 
 
 TRUE 
@@ -201,4 +203,5 @@ NEGATIVE :  '-'	 ;
 
 WS		: [ \t\r\n]+ -> skip ;
 ErrorChar : . ;
+
 
