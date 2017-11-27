@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/* *********************************************************
+FileName: Level.cs
+Authors: Fabian Mendez <ofmendez@gmail.com>, 
+		 Daniel Rodriguez <dlsusp@gmail.com>
+Create Date: 14.11.2017
+Modify Date: 27.11.2017 
+********************************************************* */
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,35 +18,67 @@ public class Level : MonoBehaviour {
 	public int levelNumber =0;
 	public bool testWithArrays;
 	public bool testWithArraysInitialized;
+	public bool testWithOnlyPositives;
+	TextEditorController  actualEditor;
+	LevelTimer timer;
+	private bool levelStarted;
 
 	void Start () {
 		patternScreen  = GetComponentInChildren<PatternScreen>(true);
+		actualEditor  = GetComponentInChildren<TextEditorController>(true);
+		timer  = GetComponentInChildren<LevelTimer>(true);
 		patternScreen.gameObject.SetActive(true);
 		patternScreen.FirstLaunch();
+		patternScreen.goButton.onClick.AddListener(GoButton);
+//		PlayerPrefs.DeleteAll();
 	}
 
 	public void SetupLevel(){
-		patternScreen  =patternScreen?patternScreen: GetComponentInChildren<PatternScreen>(true);
+		patternScreen  = patternScreen?patternScreen: GetComponentInChildren<PatternScreen>(true);
+		timer  = timer?timer: GetComponentInChildren<LevelTimer>(true);
+		actualEditor  = actualEditor?actualEditor: GetComponentInChildren<TextEditorController>(true);
 		patternScreen.gameObject.SetActive(true);
 		patternScreen.FirstLaunch();
+		timer.ResetTime();
+		actualEditor.ResetEditor();
+		levelStarted =false;
 		
+	}
+
+
+	public void GoButton(){
+		patternScreen.gameObject.SetActive(false);
+		if (!levelStarted){
+			levelStarted = true;
+			timer.StartCount();
+		}
 	}
 
 	public void TestLevel (){
 		string textToTest = "";
 		int hits = 0;
+		int expected =0;
 		int cases = 10;
-		for (int i = -cases; i <= cases; i++){
+		for (int i = (testWithOnlyPositives? 0:-cases); i <= cases; i++){
 			textToTest = GetTextToTest(i);
 			Fa.main.EvalCode(textToTest);
-			// Debug.Log(" compara:_ "+MyConsole.main.mText.text.Trim(' ', '\r', '\n' ) + " ...con... "+GetOut(i));
+			Debug.Log(" compara:_ "+MyConsole.main.mText.text.Trim(' ', '\r', '\n' ) + " ...con... "+GetOut(i));
 			hits += MyConsole.main.mText.text.Trim(' ', '\r', '\n' ) == GetOut(i) ? 1 :0;
+			expected ++;
 			MyConsole.main.ClearText();
 			textToTest = "";
 		}
-		if (hits == (cases*2)+1 ){
-			ViewController.main.LevelSucess(levelNumber);
+		if (hits == expected ){
+				LaunchSuccessView();
 		}
+	}
+
+
+	void LaunchSuccessView(){
+		actualEditor  =actualEditor?actualEditor: GetComponentInChildren<TextEditorController>(true);
+		ViewController.main.LevelSucess(levelNumber);
+		SuccessController.main.SetNLines( actualEditor.GetLinesCount());
+		SuccessController.main.SetTime( timer.GetSeconds() );
 	}
 
 
@@ -136,6 +175,19 @@ public class Level : MonoBehaviour {
 	}	
 	
 	string FuncLvl7(int i){
-		return (i+1).ToString();
+		int n = Mathf.Abs(i);
+
+		return Fibonacci(i);
 	}	
+
+	string Fibonacci(int n) {
+        int a = 0;
+        int b = 1;
+        for (int i = 0; i < n; i++) {
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+        return a.ToString();
+    }
 }

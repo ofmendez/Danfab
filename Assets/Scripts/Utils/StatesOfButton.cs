@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/* *********************************************************
+FileName: StatesOfButton.cs
+Authors: Fabian Mendez <ofmendez@gmail.com>
+Create Date: 14.11.2017
+Modify Date: 27.11.2017 
+********************************************************* */
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Events;
@@ -11,8 +17,6 @@ public class StatesOfButton : MonoBehaviour {
 	void Awake(){
 		this.GetComponent<Button>().onClick.AddListener(RunEvent);
 	}
-
-
 
 	public void RunEvent () {
 		if(activeState < onClickState.Length ){

@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/* *********************************************************
+FileName: Singleton.cs
+Author: Fabian Mendez <ofmendez@gmail.com>
+Create Date: 14.11.2017
+Modify Date: 27.11.2017 
+********************************************************* */
+using UnityEngine;
 using System.Collections;
 
 public class Singleton<Instance> : MonoBehaviour where Instance : Singleton<Instance>
@@ -11,38 +17,28 @@ public class Singleton<Instance> : MonoBehaviour where Instance : Singleton<Inst
 
 	public virtual void MyAwake() {}
 
-	public virtual void Awake()
-	{
-		if(isPersistant)
-		{
-			if(!main)
-			{
+	public virtual void Awake() {
+		if(isPersistant) {
+			if(!main) {
 				main = this as Instance;
-			}
-			else
-			{
+			} else {
 				DestroyObject(gameObject);
 			}
 			DontDestroyOnLoad(gameObject);
-		}
-		else
-		{
+		} else {
 			main = this as Instance;
 		}
 		StartCoroutine(WaitAwake());
 	}
 
-	IEnumerator WaitAwake()
-	{
+	IEnumerator WaitAwake() {
 		yield return 0;
 		// print("Awake singleton"+this.name);
 		MyAwake();
 	}
 
-	public static Instance Instancer
-	{
-		get
-		{
+	public static Instance Instancer {
+		get {
 			if (applicationIsQuitting) {
 				Debug.LogWarning("[Singleton] Instance '"+ typeof(Instance) +
 					"' already destroyed on application quit." +
@@ -50,22 +46,18 @@ public class Singleton<Instance> : MonoBehaviour where Instance : Singleton<Inst
 				return null;
 			}
 
-			lock(_lock)
-			{
-				if (main == null)
-				{
+			lock(_lock) {
+				if (main == null) {
 					main = (Instance) FindObjectOfType(typeof(Instance));
 
-					if ( FindObjectsOfType(typeof(Instance)).Length > 1 )
-					{
+					if ( FindObjectsOfType(typeof(Instance)).Length > 1 ) {
 						Debug.LogError("[Singleton] Something went really wrong " +
 							" - there should never be more than 1 singleton!" +
 							" Reopenning the scene might fix it.");
 						return main;
 					}
 
-					if (main == null)
-					{
+					if (main == null) {
 						GameObject singleton = new GameObject();
 						main = singleton.AddComponent<Instance>();
 						singleton.name = "~"+ typeof(Instance).ToString();
@@ -95,8 +87,7 @@ public class Singleton<Instance> : MonoBehaviour where Instance : Singleton<Inst
 	///   even after stopping playing the Application. Really bad!
 	/// So, this was made to be sure we're not creating that buggy ghost object.
 	/// </summary>
-	public void OnDestroy ()
-	{
+	public void OnDestroy () {
 		applicationIsQuitting = true;
 	}
 

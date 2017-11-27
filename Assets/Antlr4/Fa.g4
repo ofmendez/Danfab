@@ -51,21 +51,21 @@ if_return_break_continue
 
 
 switch_regular
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_regular )+ ('sino'  body_regular )? 'fin'
+: 'cuando'  ID  'escoge' ('caso' dataType 'entonces' body_regular )+ ('sino'  body_regular )? 'fin'
 ;
 
 switch_return
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return )+ ('sino'  body_return )? 'fin'
+: 'cuando'  ID  'escoge' ('caso' dataType 'entonces' body_return )+ ('sino'  body_return )? 'fin'
 ;
 
 
 switch_break_continue
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_break_continue )+ ('sino'  body_break_continue )? 'fin'
+: 'cuando'  ID  'escoge' ('caso' dataType 'entonces' body_break_continue )+ ('sino'  body_break_continue )? 'fin'
 ;
 
 
 switch_return_break_continue
-: 'cuando'  ID  'escoge' ('case' dataType 'entonce' body_return_break_continue )+ ('sino'  body_return_break_continue )? 'fin'
+: 'cuando'  ID  'escoge' ('caso' dataType 'entonces' body_return_break_continue )+ ('sino'  body_return_break_continue )? 'fin'
 ;
 
 
@@ -203,5 +203,4 @@ NEGATIVE :  '-'	 ;
 
 WS		: [ \t\r\n]+ -> skip ;
 ErrorChar : . ;
-
 

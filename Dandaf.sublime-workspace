@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"ex",
+				"expected"
+			],
+			[
+				"le",
+				"levelNumber"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"m",
+				"m\tmethod"
+			],
+			[
 				"To",
 				"ToString"
 			],
@@ -30,10 +46,6 @@
 			[
 				"for",
 				"for\tfor I"
-			],
-			[
-				"le",
-				"left"
 			],
 			[
 				"va",
@@ -66,10 +78,6 @@
 			[
 				"c",
 				"code"
-			],
-			[
-				"te",
-				"textToTest"
 			],
 			[
 				"en",
@@ -177,6 +185,51 @@
 			}
 		},
 		{
+			"file": "Assets/Scripts/Sounds.cs",
+			"settings":
+			{
+				"buffer_size": 2241,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Model/MyVariable.cs",
+			"settings":
+			{
+				"buffer_size": 520,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Utils/CustomErrorListener.cs",
+			"settings":
+			{
+				"buffer_size": 4686,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Model/MyFunction.cs",
+			"settings":
+			{
+				"buffer_size": 773,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Model/Instance.cs",
+			"settings":
+			{
+				"buffer_size": 351,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "/home/ofmendez/DataDocs/Work/Ubuntu/LENGUAJES/Danfab/ProjectDotNet/DanfabDotNet/bin/Debug/in.txt",
 			"settings":
 			{
@@ -189,7 +242,7 @@
 			"file": "Assets/Scripts/Fa.cs",
 			"settings":
 			{
-				"buffer_size": 882,
+				"buffer_size": 1119,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -198,7 +251,7 @@
 			"file": "Assets/Scripts/MyVisitor.cs",
 			"settings":
 			{
-				"buffer_size": 34128,
+				"buffer_size": 33733,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -207,7 +260,7 @@
 			"file": "Assets/Scripts/Model/MyArray.cs",
 			"settings":
 			{
-				"buffer_size": 1604,
+				"buffer_size": 1887,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -216,16 +269,25 @@
 			"file": "Assets/Scripts/Utils/MyConsole.cs",
 			"settings":
 			{
-				"buffer_size": 296,
+				"buffer_size": 575,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Controller/TextEditorController.cs",
+			"file": "Assets/Scripts/Utils/StatesOfButton.cs",
 			"settings":
 			{
-				"buffer_size": 817,
+				"buffer_size": 779,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/View/Key.cs",
+			"settings":
+			{
+				"buffer_size": 719,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -234,7 +296,25 @@
 			"file": "Assets/Scripts/Controller/ViewController.cs",
 			"settings":
 			{
-				"buffer_size": 1137,
+				"buffer_size": 1496,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/View/TextTyper.cs",
+			"settings":
+			{
+				"buffer_size": 1310,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/View/PatternScreen.cs",
+			"settings":
+			{
+				"buffer_size": 823,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -243,7 +323,43 @@
 			"file": "Assets/Scripts/Controller/Level.cs",
 			"settings":
 			{
-				"buffer_size": 2764,
+				"buffer_size": 4628,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Controller/SuccessController.cs",
+			"settings":
+			{
+				"buffer_size": 717,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/View/LevelTimer.cs",
+			"settings":
+			{
+				"buffer_size": 1098,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Controller/TextEditorController.cs",
+			"settings":
+			{
+				"buffer_size": 3558,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Controller/MenuLevelsController.cs",
+			"settings":
+			{
+				"buffer_size": 806,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -252,25 +368,25 @@
 			"file": "Assets/Scripts/Utils/Singleton.cs",
 			"settings":
 			{
-				"buffer_size": 2401,
+				"buffer_size": 2600,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": ".\n<color=\"#f92672\"><b>colored </b>text</color>\n\nentrada :2\n_print 3\n_print entrada +1\nentrada : i\n----------\nvar :0\nlista ml de entrada\nmientras  var menorque entrada entonces\n\tml en var : var\n\tvar : var + 1\nfin\nimprima ml\n\n----------------------------\n varofmendez :0 \n  lista entrada de 30 \n  mientras varofmendez menorque tamaño de entrada entonces \n  varofmendez : varofmendez+1\n   fin lista entrada de  4\nmax :0\ni :0\nsi entrada en i mayorque max entonces\n\timprima \"ya\"\nfin\n\n\n\n----------------------------\n  lista entrada de 4 \nmax :0\ni :0\nsi entrada en i mayorque max entonces\n\timprima \"ya\"\nfin\n\n\n----------------\nmax :0 i :0\nmientras i menorque tamaño de entrada entonces\n\tsi (entrada en i) mayorque max entonces\n\t\tmax : entrada en i\n\tfin\n\ti : i+1\nfin\nimprima max\n\n--------------------------\nÁ\nimprima entrada\n\nvarofmendez :0 \nlista entrada de 30\nmientras varofmendez menorque entrada entonces\n\tentrada en varofmendez : {}\n\nfin\n\n\nvar : \"hola\"\n_print var\n\nmain__ usa nada como\n\nfin\n_print usa main__ nada\n\nsi entrada mayorque 0 entonces\n\tresponde entrada\nsino\n\tresponde -entrada\nfin\n\nMyFunc usa a,b como\n\tvarI :6\n\t_print a+b\n\t_print varI\n\tresponde \"esto retorno\"\n\t_print \" NOO!\"\nfin\n_print \"inicia..\"\nx : 4\ny : 32\nusa MyFunc x ,y\n_print usa MyFunc x ,y\n_print \"fin..\"\n_print \"f\"\n\n\n\n\nsum usa a,b como\n\nresponde a+b\nfin\n\n_print usa sum 2,3\n\nfibo usa n como \n\tsi n igual 0 o_logico n igual 1 entonces\n\t\tresponde 1\n\tsino\n\t\tresponde n * usa fibo n-1\n\tfin\nfin\n_print usa fibo 5\n\n\nfibo usa n como \n\tsi n igual 0 o_logico n igual 1 entonces\n\t\tresponde 1\n\tsino\n\t\tvar : usa fibo 0\n\t_print var\n\t\tresponde n \n\tfin\nfin\n_print usa fibo 5\n\na : 66\nfunc usa a como\n\tvarF : 88\n\t_print varF\n\t_print a\nfin\nusa func 6\n\nsuma usa a ,b como\n _print a + b\n_print \"a: \"+a\n_print \"b: \"+b\n\tusa func b\nfin\n\nusa suma 5, 30\n\n\nfibo usa n como \n\tsi n menorque 0 entonces\n\t\tresponde \"negativo\"\n\to_si n igual 0 entonces\n\t\tresponde \"es cero\"\n\tsino\n\t\tresponde \"positivo\" \n\tfin\nfin\n_print usa fibo 5\n_print usa fibo 1\n_print usa fibo 0\n_print usa fibo 44\n_print usa fibo -5\n_print usa fibo -0.95\n",
+			"contents": ".\n1#####\nimprima entrada +1\n2#####\nimprima entrada mayorque 0\n3#####\nsi entrada mayorque 0 entonces\n\timprima entrada\nsino\n\timprima -entrada\nfin\n\n4#####\nimprima tamaño de entrada\n\n5#####\nvar :0\nlista resp de entrada\nmientras var menorque entrada entonces\nresp en var :var\nvar : var +1\nfin \nimprima resp\n\n6#####\nmax :0\ni :0\nmientras i menorque tamaño de entrada entonces\n\tsi (entrada en i) mayorque max entonces\n\tmax :entrada en i\n\tfin\n\ti:i+1\nfin\nimprima max\n\n7####\nmiFibo usa N como\n   si N igual 0 entonces\n\t\tresponde 0\n\to_si N igual 1 entonces\n\t\tresponde 1\n   sino\n      responde (usa miFibo N-1) +usa miFibo N-2\n  fin\nfin\nimprima usa miFibo entrada\n\n\n\n\n<color=\"#f92672\"><b>colored </b></color>\n\nentrada :2\n_print 3\n_print entrada +1\nentrada : i\n----------\nvar :0\nlista ml de entrada\nmientras  var menorque entrada entonces\n\tml en var : var\n\tvar : var + 1\nfin\nimprima ml\n\n----------------------------\n varofmendez :0 \n  lista entrada de 30 \n  mientras varofmendez menorque tamaño de entrada entonces \n  varofmendez : varofmendez+1\n   fin lista entrada de  4\nmax :0\ni :0\nsi entrada en i mayorque max entonces\n\timprima \"ya\"\nfin\n\n\n\n----------------------------\n  lista entrada de 4 \nmax :0\ni :0\nsi entrada en i mayorque max entonces\n\timprima \"ya\"\nfin\n\n\n----------------\nmax :0 i :0\nmientras i menorque tamaño de entrada entonces\n\tsi (entrada en i) mayorque max entonces\n\t\tmax : entrada en i\n\tfin\n\ti : i+1\nfin\nimprima max\n\n--------------------------\nÁ\nimprima entrada\n\nvarofmendez :0 \nlista entrada de 30\nmientras varofmendez menorque entrada entonces\n\tentrada en varofmendez : {}\n\nfin\n\n\nvar : \"hola\"\n_print var\n\nmain__ usa nada como\n\nfin\n_print usa main__ nada\n\nsi entrada mayorque 0 entonces\n\tresponde entrada\nsino\n\tresponde -entrada\nfin\n\nMyFunc usa a,b como\n\tvarI :6\n\t_print a+b\n\t_print varI\n\tresponde \"esto retorno\"\n\t_print \" NOO!\"\nfin\n_print \"inicia..\"\nx : 4\ny : 32\nusa MyFunc x ,y\n_print usa MyFunc x ,y\n_print \"fin..\"\n_print \"f\"\n\n\n\n\nsum usa a,b como\n\nresponde a+b\nfin\n\n_print usa sum 2,3\n\nfibo usa n como \n\tsi n igual 0 o_logico n igual 1 entonces\n\t\tresponde 1\n\tsino\n\t\tresponde n * usa fibo n-1\n\tfin\nfin\n_print usa fibo 5\n\n\nfibo usa n como \n\tsi n igual 0 o_logico n igual 1 entonces\n\t\tresponde 1\n\tsino\n\t\tvar : usa fibo 0\n\t_print var\n\t\tresponde n \n\tfin\nfin\n_print usa fibo 5\n\na : 66\nfunc usa a como\n\tvarF : 88\n\t_print varF\n\t_print a\nfin\nusa func 6\n\nsuma usa a ,b como\n _print a + b\n_print \"a: \"+a\n_print \"b: \"+b\n\tusa func b\nfin\n\nusa suma 5, 30\n\n\nfibo usa n como \n\tsi n menorque 0 entonces\n\t\tresponde \"negativo\"\n\to_si n igual 0 entonces\n\t\tresponde \"es cero\"\n\tsino\n\t\tresponde \"positivo\" \n\tfin\nfin\n_print usa fibo 5\n_print usa fibo 1\n_print usa fibo 0\n_print usa fibo 44\n_print usa fibo -5\n_print usa fibo -0.95\n",
 			"settings":
 			{
-				"buffer_size": 2063,
+				"buffer_size": 2712,
 				"line_ending": "Unix",
 				"name": "."
 			}
 		},
 		{
-			"file": "Assets/Antlr4/Grammar.g4",
+			"file": "Assets/Antlr4/Fa.g4",
 			"settings":
 			{
-				"buffer_size": 5249,
+				"buffer_size": 5247,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -500,6 +616,9 @@
 	],
 	"file_history":
 	[
+		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Scripts/Utils/TypesEvent.cs",
+		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Scripts/Controller/TextEditorController.cs",
+		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Grammar.g4",
 		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Scripts/Controller/Level.cs",
 		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Scripts/Controller/MenuLevelsController.cs",
 		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Scripts/View/Key.cs",
@@ -518,7 +637,6 @@
 		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Scripts/Utils/MyFunction.cs",
 		"/home/ofmendez/.config/sublime-text-3/Packages/ColorPicker/ColorPicker.sublime-settings",
 		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Grammar.g4.meta",
-		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Grammar.g4",
 		"/etc/default/grub",
 		"/media/windows/Users/OFMendez/Documents/Work/Ubuntu/Eclipse/TCL/target/generated-sources/antlr4/Utils/MyArray.java",
 		"/home/ofmendez/DataDocs/Work/Ubuntu/Eclipse/TCL/build/classes/MyArray.class",
@@ -625,17 +743,15 @@
 		"/media/ofmendez/E6D8AAACD8AA7A87/Users/OFMendez/Documents/Work/Ubuntu/ANTLR/Ejemplos/Hello/HelloBaseListener.java",
 		"/media/ofmendez/E6D8AAACD8AA7A87/Users/OFMendez/Documents/Work/Ubuntu/SafeAndSound/db/schema.rb",
 		"/home/ofmendez/Desktop/gramaticaOLD",
-		"/home/ofmendez/Downloads/ejemplos-parser/out00.txt",
-		"/home/ofmendez/Desktop/gramaticaNEW",
-		"/home/ofmendez/Desktop/untitled"
+		"/home/ofmendez/Downloads/ejemplos-parser/out00.txt"
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 117.0,
+		"height": 229.0,
 		"where_history":
 		[
 			""
@@ -646,6 +762,52 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'entonce'",
+			"'case'",
+			"cuando",
+			"bcuando",
+			"sino",
+			"tamaño",
+			"lista",
+			"blista",
+			"\t//",
+			"SetMaxAviable",
+			"timer",
+			"patternScreen",
+			"66d9ef",
+			"usa",
+			"patternScreen",
+			"imprima",
+			"string",
+			"inField.text",
+			"f92672",
+			"string pattern",
+			"pattern",
+			"Si",
+			"sino",
+			"Si",
+			"mientras",
+			"si",
+			"f92672",
+			"false",
+			"verdadero",
+			"imprima",
+			"entonces",
+			"tamaño de",
+			"tamaño",
+			"usa",
+			"lista",
+			"fin",
+			"<b>",
+			"mientras",
+			"\t\t\t//",
+			"\n\t\t\t",
+			"\t\t\t",
+			"inField.text",
+			"si",
+			"Grammar",
+			"GrammarParser",
+			"AddListener",
 			"VisitExpression",
 			"entrada",
 			"limit",
@@ -727,53 +889,7 @@
 			"Exist",
 			"push",
 			"put",
-			"<>",
-			"Map",
-			"HashMap",
-			"Map",
-			"MyLanguage",
-			"myLanguage",
-			"MyLanguage",
-			"myLanguage",
-			"MyLanguage",
-			"expression",
-			"value",
-			"expressionContent",
-			";",
-			"return",
-			"}",
-			"{",
-			"while",
-			"body_break_continue",
-			"body_return",
-			"body_regular",
-			"has",
-			"body_break_continue",
-			"body_return",
-			"body_regular",
-			"function_call",
-			"']'",
-			"'['",
-			"ñ",
-			"EJ ",
-			"?",
-			"entonces",
-			"vacio",
-			"entonces",
-			"Sharpen.BitSet",
-			"errorOutput",
-			"writer",
-			"conso",
-			"consolo",
-			"conosole",
-			"console",
-			"error de Daniel",
-			"visit",
-			"visit(",
-			"Speak",
-			"speak",
-			"Speak",
-			"speak"
+			"<>"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -791,7 +907,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -806,8 +922,8 @@
 						"selection":
 						[
 							[
-								586,
-								586
+								237,
+								237
 							]
 						],
 						"settings":
@@ -822,11 +938,161 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "Assets/Scripts/Sounds.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								124,
+								124
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Model/MyVariable.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/Utils/CustomErrorListener.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Model/MyFunction.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Model/Instance.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 351,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "/home/ofmendez/DataDocs/Work/Ubuntu/LENGUAJES/Danfab/ProjectDotNet/DanfabDotNet/bin/Debug/in.txt",
 					"semi_transient": false,
 					"settings":
@@ -853,145 +1119,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Assets/Scripts/Fa.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 882,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								239,
-								239
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C#/C#.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Assets/Scripts/MyVisitor.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 34128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9395,
-								9395
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"history_list_is_closing": true,
-							"syntax": "Packages/C#/C#.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5403.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Assets/Scripts/Model/MyArray.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1604,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								430,
-								430
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C#/C#.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 41.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "Assets/Scripts/Utils/MyConsole.cs",
+					"buffer": 7,
+					"file": "Assets/Scripts/Fa.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 296,
+						"buffer_size": 1119,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								234,
-								234
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C#/C#.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Assets/Scripts/Controller/TextEditorController.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 817,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								152,
-								152
+								414,
+								414
 							]
 						],
 						"settings":
@@ -1008,25 +1153,26 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "Assets/Scripts/Controller/ViewController.cs",
+					"buffer": 8,
+					"file": "Assets/Scripts/MyVisitor.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1137,
+						"buffer_size": 33733,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								491,
-								491
+								80,
+								80
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
+							"history_list_is_closing": true,
 							"syntax": "Packages/C#/C#.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1034,54 +1180,55 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "Assets/Scripts/Controller/Level.cs",
+					"buffer": 9,
+					"file": "Assets/Scripts/Model/MyArray.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2764,
+						"buffer_size": 1887,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								567,
-								567
+								78,
+								78
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/C#/C#.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 132.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 10,
 					"file": "Assets/Scripts/Utils/MyConsole.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 296,
+						"buffer_size": 575,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								230,
-								230
+								80,
+								80
 							]
 						],
 						"settings":
@@ -1093,24 +1240,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "Assets/Scripts/Utils/Singleton.cs",
+					"buffer": 11,
+					"file": "Assets/Scripts/Utils/StatesOfButton.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2401,
+						"buffer_size": 779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								544
+								132,
+								132
 							]
 						],
 						"settings":
@@ -1120,10 +1267,338 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "Assets/Scripts/View/Key.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 719,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								74,
+								74
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "Assets/Scripts/Controller/ViewController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1496,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								85,
+								85
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 78.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "Assets/Scripts/View/TextTyper.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								80,
+								80
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "Assets/Scripts/View/PatternScreen.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								84,
+								84
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "Assets/Scripts/Controller/Level.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4628,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								76,
+								76
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "Assets/Scripts/Controller/SuccessController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 717,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								88
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "Assets/Scripts/View/LevelTimer.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1098,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "Assets/Scripts/Controller/TextEditorController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3558,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								91,
+								91
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "Assets/Scripts/Controller/MenuLevelsController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 806,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								91,
+								91
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Assets/Scripts/Utils/MyConsole.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 575,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								509,
+								509
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "Assets/Scripts/Utils/Singleton.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1133,19 +1608,19 @@
 			"sheets":
 			[
 				{
-					"buffer": 10,
+					"buffer": 22,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2063,
+						"buffer_size": 2712,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								769,
-								619
+								458,
+								458
 							]
 						],
 						"settings":
@@ -1157,27 +1632,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 546.0,
+						"translation.y": 756.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "Assets/Antlr4/Grammar.g4",
+					"buffer": 23,
+					"file": "Assets/Antlr4/Fa.g4",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5249,
+						"buffer_size": 5247,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4450,
-								4463
+								1216,
+								1216
 							]
 						],
 						"settings":
@@ -1186,10 +1661,10 @@
 							"syntax": "Packages/ANTLR syntax highlight/Antlr.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1872.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1197,11 +1672,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 34.0
 	},
 	"input":
 	{
-		"height": 54.0
+		"height": 79.0
 	},
 	"layout":
 	{
@@ -1223,7 +1698,7 @@
 		"cols":
 		[
 			0.0,
-			0.651717078732,
+			0.658064453227,
 			1.0
 		],
 		"rows":
@@ -1265,7 +1740,7 @@
 	"project": "Dandaf.sublime-project",
 	"replace":
 	{
-		"height": 54.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1274,6 +1749,34 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"levelcon",
+				"Scripts/Controller/MenuLevelsController.cs"
+			],
+			[
+				"editor",
+				"Scripts/Controller/TextEditorController.cs"
+			],
+			[
+				"texedi",
+				"Scripts/Controller/TextEditorController.cs"
+			],
+			[
+				"level.",
+				"Scripts/Controller/Level.cs"
+			],
+			[
+				"fa.g",
+				"Antlr4/Fa.g4"
+			],
+			[
+				"vie",
+				"Scripts/Controller/ViewController.cs"
+			],
+			[
+				"fa.cs",
+				"Scripts/Fa.cs"
+			],
 			[
 				"myc",
 				"Scripts/Utils/MyConsole.cs"
@@ -1379,7 +1882,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

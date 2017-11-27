@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/* *********************************************************
+FileName: TextTyper.cs
+Authors: Fabian Mendez <ofmendez@gmail.com>, 
+         Daniel Rodriguez <dlsusp@gmail.com>
+Create Date: 14.11.2017
+Modify Date: 27.11.2017 
+********************************************************* */
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +20,6 @@ public class TextTyper : MonoBehaviour {
      string message;
      Text textComp;
  
-     // Use this for initialization
      void OnEnable () {
         StopAllCoroutines();
         textComp = textComp? textComp : GetComponent<Text>();
@@ -21,8 +27,6 @@ public class TextTyper : MonoBehaviour {
         textComp.text = "";
         StartCoroutine(TypeText ());
      }
- 
-
  
      IEnumerator TypeText () {
          foreach (char letter in message.ToCharArray()) {

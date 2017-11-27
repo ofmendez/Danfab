@@ -1,3 +1,10 @@
+/* *********************************************************
+FileName: MyVisitor.cs
+Authors: Fabian Mendez <ofmendez@gmail.com>, 
+		 Daniel Rodriguez <dlsusp@gmail.com>
+Create Date: 14.11.2017
+Modify Date: 27.11.2017 
+********************************************************* */
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,10 +47,8 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 	}
 
 	object ExistInLast (string id){
-
 		if( queue.Last().ContainsKey(id) )
 			return   queue.Last()[id];
-
 		return null;
 	}
 
@@ -60,15 +65,14 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 	}
 
 	public override object VisitPrint(FaParser.PrintContext context){
-
 		object toPrint = Visit(context.expression());
 		if(toPrint is bool){
 			// Console.WriteLine((bool)toPrint?"verdadero":"falso");
-			Debug.Log( ((bool)toPrint)?"verdadero":"falso");
+			// Debug.Log( ((bool)toPrint)?"verdadero":"falso");
 			MyConsole.main.AppendText(""+  ( ((bool)toPrint)?"verdadero":"falso") ); 
 		}else{
 			// Console.WriteLine(toPrint);
- 			Debug.Log( toPrint);
+ 			// Debug.Log( toPrint);
 			MyConsole.main.AppendText(""+toPrint); 
 		}
 		return null;
@@ -141,7 +145,6 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		//			MyConsole.main(id+" no ha sidop declarado");
 		
 		return result;
-
 	}
 
 
@@ -151,7 +154,6 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 	
 	public override object VisitExpression(FaParser.ExpressionContext context){
 		return Visit(context.expressionContent());
-
 	}
 
 	public override object VisitExpressionContentSumOrNeg(FaParser.ExpressionContentSumOrNegContext context){
@@ -411,15 +413,12 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 	}
 
 	
-	//TODO : expresionContentArrayPosition
-	
 	//######################
 	// FUNCTIONS
 	//######################
 	public override object VisitFunction(FaParser.FunctionContext context){
 
 		string id = context.ID(0).GetText();
-
 		int nArgs = context.ID().Length -1;
 		LinkedList<string> namesParams = new LinkedList<string>();
 
@@ -429,7 +428,6 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 
 		MyFunction var = new MyFunction(id, nArgs, namesParams, context.body_return() );
 		queue.Last().Add(id,var);
-
 		return null;
 	}
 
@@ -490,16 +488,12 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 				MyConsole.main.AppendText("No ha sido declarada una funcion con este nombre");
 			}
 		}
-
 		return null;
 	}
 
 	public override object VisitReturn_regular(FaParser.Return_regularContext context){
 		if (context.expression() == null)
 			return null; //TODO : solucionar responde "nada"
-		// string result = (string) Visit(context.expression());
-		// Tebug.Log(" EVALUADO: " + result);
-		// return result;
 		return Visit(context.expression());
 	}
 
@@ -745,23 +739,15 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		object valueExp = VisitExpression( context.expression() );
 		int limit = 500;
 		int cicles = 0;
-		if (valueExp is bool)
-		{
+		if (valueExp is bool) {
 
-			while((bool)valueExp)
-			{
+			while((bool)valueExp) {
 				object resp = Visit(context.body_break_continue());
-				if (resp is float)
-				{
-					if ((float) resp == (float)1.1)
-					{
+				if (resp is float) {
+					if ((float) resp == (float)1.1) {
 						break;
 					}
-					else
-					{
-						// Debug.Log("PINCHE MIERDAAAAAAAAAAAAAA!");
-						//Console.WriteLine("PINCHE MIERDAAAAAAAAAAAAAA!");
-					}
+					else {}
 				}
 				valueExp = VisitExpression( context.expression() );
 				cicles++;
@@ -770,9 +756,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 				}
 			}
 
-		}
-		else
-		{
+		} else {
 			Debug.LogError("No es una expresion booleana para while");
 			// Console.WriteLine("No es una expresion booleana para while");
 			MyConsole.main.AppendText("No es una expresion booleana para while");
@@ -780,33 +764,25 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return null;
 	}
 
-	public override object VisitWhile_return(FaParser.While_returnContext context)
-	{
+	public override object VisitWhile_return(FaParser.While_returnContext context) {
 		object valueExp = VisitExpression( context.expression() );
 
-		if (valueExp is bool)
-		{
+		if (valueExp is bool) {
 
-			while((bool)valueExp)
-			{
+			while((bool)valueExp) {
 				object resp = Visit(context.body_return_break_continue());
-				if (resp is float)
-				{
-					if ((float) resp == (float)1.1)
-					{	
+				if (resp is float) {
+					if ((float) resp == (float)1.1) {
 						break;
 					}
 
-				}else if (resp != null)
-				{
+				}else if (resp != null) {
 					return resp;
 				}
 				valueExp = VisitExpression( context.expression() );
 			}
 
-		}
-		else
-		{
+		} else {
 			Debug.LogError("No es una expresion booleana para while.(r)");
 			// Console.WriteLine("No es una expresion booleana para while.(r)");
 			MyConsole.main.AppendText("No es una expresion booleana para while.(r)");
@@ -850,8 +826,8 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return null;
 	}
 
+	//Assign position of array
 	public override object VisitBodyArrayPosition(FaParser.BodyArrayPositionContext context){
-		//Assign position of array
 		string id = context.ID().GetText();
 		object position = VisitExpression(context.expression(0));
 
@@ -878,8 +854,6 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 
 	public override object VisitBodyArrayDeclaration(FaParser.BodyArrayDeclarationContext context){
 		string id = context.ID().GetText();
-		
-//		int position = Convert.ToInt32( context.INTEGER().GetText() );
 		object size = VisitExpression(context.expression());
 		
 		if (size is int){
@@ -957,37 +931,28 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_BC(FaParser.Body_BC_BCContext context)
-	{
-		if (context.bc.Text == "interrumpir")
-		{
+	public override object VisitBody_BC_BC(FaParser.Body_BC_BCContext context) {
+		if (context.bc.Text == "interrumpir") {
 			return (float)1.1;
 		}
-		if (context.bc.Text == "saltar")
-		{
+		if (context.bc.Text == "saltar") {
 			return (float)1.0;
 		}
-
 		return Visit(context.body_break_continue());
 	}
 
 
-	public override object VisitBody_RBC_BC(FaParser.Body_RBC_BCContext context)
-	{
-		if (context.bc.Text == "interrumpir")
-		{
+	public override object VisitBody_RBC_BC(FaParser.Body_RBC_BCContext context) {
+		if (context.bc.Text == "interrumpir") {
 			return (float)1.1;
 		}
-		if (context.bc.Text == "saltar")
-		{
+		if (context.bc.Text == "saltar") {
 			return (float)1.0;
 		}
-
-		return Visit(context.body_return_break_continue());
+ 		return Visit(context.body_return_break_continue());
 	}
 
-	public override object VisitBody_RBC_Body(FaParser.Body_RBC_BodyContext context)
-	{
+	public override object VisitBody_RBC_Body(FaParser.Body_RBC_BodyContext context) {
 		object result = Visit(context.body());
 		if ( result == null){
 			result = Visit(context.body_return_break_continue());
@@ -995,8 +960,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_returWhileReturn(FaParser.Body_returWhileReturnContext context)
-	{
+	public override object VisitBody_returWhileReturn(FaParser.Body_returWhileReturnContext context) {
 		object result = VisitWhile_return(context.while_return());
 		if ( result == null){
 			result = Visit(context.body_return());
@@ -1004,8 +968,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_returnSwitchReturn(FaParser.Body_returnSwitchReturnContext context)
-	{
+	public override object VisitBody_returnSwitchReturn(FaParser.Body_returnSwitchReturnContext context) {
 		object result = VisitSwitch_return(context.switch_return());
 		if ( result == null){
 			result = Visit(context.body_return());
@@ -1013,8 +976,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_WhileRegular(FaParser.Body_BC_WhileRegularContext context)
-	{
+	public override object VisitBody_BC_WhileRegular(FaParser.Body_BC_WhileRegularContext context) {
 		object result = VisitWhile_regular(context.while_regular());
 		if ( result == null){
 			result = Visit(context.body_break_continue());
@@ -1022,8 +984,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_SwitchBC(FaParser.Body_BC_SwitchBCContext context)
-	{
+	public override object VisitBody_BC_SwitchBC(FaParser.Body_BC_SwitchBCContext context) {
 		object result = VisitSwitch_break_continue(context.switch_break_continue());
 		if ( result == null){
 			result = Visit(context.body_break_continue());
@@ -1031,8 +992,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_RBC_WhileReturn(FaParser.Body_RBC_WhileReturnContext context)
-	{
+	public override object VisitBody_RBC_WhileReturn(FaParser.Body_RBC_WhileReturnContext context) {
 		object result = VisitWhile_return(context.while_return());
 		if ( result == null){
 			result = Visit(context.body_return_break_continue());
@@ -1040,8 +1000,7 @@ public class MyVisitor : FaBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_RBC_SwitchRBC(FaParser.Body_RBC_SwitchRBCContext context)
-	{
+	public override object VisitBody_RBC_SwitchRBC(FaParser.Body_RBC_SwitchRBCContext context) {
 		object result = VisitSwitch_return_break_continue(context.switch_return_break_continue());
 		if ( result == null){
 			result = Visit(context.body_return_break_continue());

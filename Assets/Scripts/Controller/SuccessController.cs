@@ -1,5 +1,5 @@
 ﻿/* *********************************************************
-FileName: Key.cs
+FileName: SuccessController.cs
 Authors: Fabian Mendez <ofmendez@gmail.com>, 
 		 Daniel Rodriguez <dlsusp@gmail.com>
 Create Date: 14.11.2017
@@ -10,18 +10,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Key : MonoBehaviour {
+public class SuccessController : Singleton< SuccessController> {
 
-	Button key;
-	string keyName;
-	public bool overrideTxt;
-	public string textToOverride;
+	public Text nLines;
+	public Text time;
+	public Text complex;
 
-	void Start () {
-		key = GetComponent<Button>();
-		keyName = overrideTxt ? textToOverride : GetComponentInChildren<Text>().text;
-		// key.onClick.AddListener(() => TextEditorController.main.AppendText(keyName));
+
+	public void SetNLines ( int n) {
+		nLines.text = ""+n;
+		System.Random rnd = new System.Random();
+		complex.text = ""+rnd.Next(20,100);
 	}
-	
+
+	public void SetTime ( int n) {
+		time.text = ""+n;
+	}
 
 }

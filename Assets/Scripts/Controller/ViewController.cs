@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/* *********************************************************
+FileName: ViewController.cs
+Authors: Fabian Mendez <ofmendez@gmail.com>, 
+		 Daniel Rodriguez <dlsusp@gmail.com>
+Create Date: 14.11.2017
+Modify Date: 27.11.2017 
+********************************************************* */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,20 +24,16 @@ public class ViewController : Singleton< ViewController> {
 	}
 
 	void Start () {
-		// SetAllInactive();
-		// menus[0].SetActive(true);
+		SetAllInactive();
+		menus[0].SetActive(true);
 	}
 
-	// public void LaunchMenu(int _l){
-	// 	SetAllInactive();
-	// 	menus[_l].SetActive(true);
-	// }
 
 	public void LaunchLevelsMenu(){
 		SetAllInactive();
 		menuLevel.gameObject.SetActive(true);
+		LastLevelSuccess =  PlayerPrefs.HasKey("LastLevelSuccess")? PlayerPrefs.GetInt("LastLevelSuccess"): 0;
 		menuLevel.SetMaxAviable(LastLevelSuccess);
-
 	}
 
 	public void LaunchLevel(int _l){
@@ -41,6 +44,7 @@ public class ViewController : Singleton< ViewController> {
 
 	public void LevelSucess(int _l){
 		LastLevelSuccess = _l;
+		PlayerPrefs.SetInt("LastLevelSuccess",_l);
 		SetAllInactive();
 		success.SetActive(true);
 	}
