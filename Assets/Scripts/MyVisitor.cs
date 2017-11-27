@@ -9,7 +9,7 @@ using UnityEngine;
 
 using Utils;
 
-public class MyVisitor : GrammarBaseVisitor<System.Object>{
+public class MyVisitor : FaBaseVisitor<System.Object>{
 
 	Dictionary<string, Instance> memory = new Dictionary<string, Instance>();
 	LinkedList<Dictionary<string, Instance>> queue = new LinkedList<Dictionary<string, Instance>>();
@@ -59,7 +59,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitPrint(GrammarParser.PrintContext context){
+	public override object VisitPrint(FaParser.PrintContext context){
 
 		object toPrint = Visit(context.expression());
 		if(toPrint is bool){
@@ -76,12 +76,12 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 
 
-	public override object VisitPrincipal(GrammarParser.PrincipalContext context){
+	public override object VisitPrincipal(FaParser.PrincipalContext context){
 		queue.AddLast(memory);
 		return VisitChildren(context);
 	}
 
-	public override object VisitDataType(GrammarParser.DataTypeContext context){
+	public override object VisitDataType(FaParser.DataTypeContext context){
 		object result = null;
 		if(context.DOUBLE() != null){
 			result = double.Parse(context.DOUBLE().GetText());
@@ -105,7 +105,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	// ARRAYS
 	//######################
 
-	public override object VisitArrayPosition(GrammarParser.ArrayPositionContext context){
+	public override object VisitArrayPosition(FaParser.ArrayPositionContext context){
 		object result = null;
 		string id = context.ID().GetText();
 		object position = VisitExpression(context.expression());
@@ -129,7 +129,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitArraysize(GrammarParser.ArraysizeContext context){
+	public override object VisitArraysize(FaParser.ArraysizeContext context){
 		object result = null;
 		string id = context.ID().GetText();
 		object arr = ExistInLast(id);
@@ -149,12 +149,12 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	// EXPRESSIONS
 	//######################
 	
-	public override object VisitExpression(GrammarParser.ExpressionContext context){
+	public override object VisitExpression(FaParser.ExpressionContext context){
 		return Visit(context.expressionContent());
 
 	}
 
-	public override object VisitExpressionContentSumOrNeg(GrammarParser.ExpressionContentSumOrNegContext context){
+	public override object VisitExpressionContentSumOrNeg(FaParser.ExpressionContentSumOrNegContext context){
 		// Tebug.Log("v Suma Resta");
         object left = Visit(context.expressionContent(0));
         object right = Visit(context.expressionContent(1));
@@ -189,7 +189,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitExpressionContentNot(GrammarParser.ExpressionContentNotContext context){
+	public override object VisitExpressionContentNot(FaParser.ExpressionContentNotContext context){
         object value = Visit(context.expressionContent());
 		if ( value is bool)
 			return  ! (bool) value ;
@@ -200,7 +200,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return null;
 	}
 
-	public override object VisitExpressionContentID(GrammarParser.ExpressionContentIDContext context){
+	public override object VisitExpressionContentID(FaParser.ExpressionContentIDContext context){
 		string id = context.ID().GetText();
 		object var = ExistInLast(id);
 		if (var is MyVariable){
@@ -215,11 +215,11 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return null;
 	}
 
-	public override object VisitExpressionContentParenthesis(GrammarParser.ExpressionContentParenthesisContext context){
+	public override object VisitExpressionContentParenthesis(FaParser.ExpressionContentParenthesisContext context){
 		return Visit(context.expressionContent());
 	}
 
-	public override object VisitExpressionContentNegative(GrammarParser.ExpressionContentNegativeContext context){
+	public override object VisitExpressionContentNegative(FaParser.ExpressionContentNegativeContext context){
 		object expToNegate = Visit(context.expressionContent());
 		object result = null;
 		if (expToNegate is double)
@@ -235,7 +235,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitExpressionContentRelational(GrammarParser.ExpressionContentRelationalContext context){
+	public override object VisitExpressionContentRelational(FaParser.ExpressionContentRelationalContext context){
 
 		object left = Visit(context.expressionContent(0));
 		object right = Visit(context.expressionContent(1));
@@ -298,7 +298,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitExpressionContentequality(GrammarParser.ExpressionContentequalityContext context){
+	public override object VisitExpressionContentequality(FaParser.ExpressionContentequalityContext context){
 
 		object left = Visit(context.expressionContent(0));
 		object right = Visit(context.expressionContent(1));
@@ -337,7 +337,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitExpressionContentAnd(GrammarParser.ExpressionContentAndContext context){
+	public override object VisitExpressionContentAnd(FaParser.ExpressionContentAndContext context){
 		object left = Visit(context.expressionContent(0));
 		object right = Visit(context.expressionContent(1));
 		object result = null;
@@ -353,7 +353,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitExpressionContentContentOr(GrammarParser.ExpressionContentContentOrContext context){
+	public override object VisitExpressionContentContentOr(FaParser.ExpressionContentContentOrContext context){
 
 		object left = Visit(context.expressionContent(0));
 		object right = Visit(context.expressionContent(1));
@@ -371,7 +371,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 	}
 
-	public override object VisitExpressionContentMul(GrammarParser.ExpressionContentMulContext context){
+	public override object VisitExpressionContentMul(FaParser.ExpressionContentMulContext context){
 		object result = null;
 
 		object left = Visit(context.expressionContent(0));
@@ -406,7 +406,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 
-	public override object VisitExpressionContentFunctionCall(GrammarParser.ExpressionContentFunctionCallContext context){
+	public override object VisitExpressionContentFunctionCall(FaParser.ExpressionContentFunctionCallContext context){
 		return VisitFunction_call(context.function_call());
 	}
 
@@ -416,7 +416,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	//######################
 	// FUNCTIONS
 	//######################
-	public override object VisitFunction(GrammarParser.FunctionContext context){
+	public override object VisitFunction(FaParser.FunctionContext context){
 
 		string id = context.ID(0).GetText();
 
@@ -434,7 +434,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 
-	public override object VisitFunction_call(GrammarParser.Function_callContext context){
+	public override object VisitFunction_call(FaParser.Function_callContext context){
 		String id = context.ID().GetText();
 		object instance = Exist (id);
 
@@ -494,7 +494,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return null;
 	}
 
-	public override object VisitReturn_regular(GrammarParser.Return_regularContext context){
+	public override object VisitReturn_regular(FaParser.Return_regularContext context){
 		if (context.expression() == null)
 			return null; //TODO : solucionar responde "nada"
 		// string result = (string) Visit(context.expression());
@@ -506,7 +506,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	//######################
 	// IF's
 	//######################
-	public override object VisitIf_regular(GrammarParser.If_regularContext context){
+	public override object VisitIf_regular(FaParser.If_regularContext context){
 		int nExpressions = context.expression().Length;
 		bool thrown = false;
 		for (int i = 0; i < nExpressions; i++){
@@ -530,7 +530,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return null;
 	}
 	
-	public override object VisitIf_return(GrammarParser.If_returnContext context){
+	public override object VisitIf_return(FaParser.If_returnContext context){
 		int nExpressions = context.expression().Length;
 		object result = null;
 		bool thrown = false;
@@ -557,7 +557,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 
-	public override object VisitIf_break_continue(GrammarParser.If_break_continueContext context)
+	public override object VisitIf_break_continue(FaParser.If_break_continueContext context)
 	{
 		int nExpressions = context.expression().Length;
 		object result = null;
@@ -585,7 +585,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 
-	public override object VisitIf_return_break_continue(GrammarParser.If_return_break_continueContext context)
+	public override object VisitIf_return_break_continue(FaParser.If_return_break_continueContext context)
 	{
 		int nExpressions = context.expression().Length;
 		object result = null;
@@ -619,7 +619,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	// SWITCH's
 	//######################
 
-	 public override object VisitSwitch_regular(GrammarParser.Switch_regularContext context)
+	 public override object VisitSwitch_regular(FaParser.Switch_regularContext context)
 	 {
 		 int nCases = context.dataType().Length;
 		 string id = context.ID().GetText();
@@ -646,7 +646,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 
 
 
-	public override object VisitSwitch_return(GrammarParser.Switch_returnContext context)
+	public override object VisitSwitch_return(FaParser.Switch_returnContext context)
 	{
 		int nCases = context.dataType().Length;
 		string id = context.ID().GetText();
@@ -677,7 +677,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 	
 
-	public override object VisitSwitch_break_continue(GrammarParser.Switch_break_continueContext context)
+	public override object VisitSwitch_break_continue(FaParser.Switch_break_continueContext context)
 	{
 		int nCases = context.dataType().Length;
 		string id = context.ID().GetText();
@@ -707,7 +707,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitSwitch_return_break_continue(GrammarParser.Switch_return_break_continueContext context)
+	public override object VisitSwitch_return_break_continue(FaParser.Switch_return_break_continueContext context)
 	{
 		int nCases = context.dataType().Length;
 		string id = context.ID().GetText();
@@ -740,7 +740,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	//######################
 	// CICLES
 	//######################
-	public override object VisitWhile_regular(GrammarParser.While_regularContext context)
+	public override object VisitWhile_regular(FaParser.While_regularContext context)
 	{
 		object valueExp = VisitExpression( context.expression() );
 		int limit = 500;
@@ -780,7 +780,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return null;
 	}
 
-	public override object VisitWhile_return(GrammarParser.While_returnContext context)
+	public override object VisitWhile_return(FaParser.While_returnContext context)
 	{
 		object valueExp = VisitExpression( context.expression() );
 
@@ -819,17 +819,17 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	//######################
 
 
-	public override object VisitBodyPrint(GrammarParser.BodyPrintContext context){
+	public override object VisitBodyPrint(FaParser.BodyPrintContext context){
 		VisitPrint(context.print());
 		return null;
 	}
 
-	public override object VisitBodyFunctionCall(GrammarParser.BodyFunctionCallContext context){
+	public override object VisitBodyFunctionCall(FaParser.BodyFunctionCallContext context){
 		VisitFunction_call(context.function_call());
 		return null;
 	}
 
-	public override object VisitBodyAssignVariable(GrammarParser.BodyAssignVariableContext context){
+	public override object VisitBodyAssignVariable(FaParser.BodyAssignVariableContext context){
 		string id = context.ID().GetText();
 		object value = VisitExpression(context.expression());
 		MyVariable var = new MyVariable(id, getType(value),value);
@@ -850,7 +850,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return null;
 	}
 
-	public override object VisitBodyArrayPosition(GrammarParser.BodyArrayPositionContext context){
+	public override object VisitBodyArrayPosition(FaParser.BodyArrayPositionContext context){
 		//Assign position of array
 		string id = context.ID().GetText();
 		object position = VisitExpression(context.expression(0));
@@ -876,7 +876,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 	
 
-	public override object VisitBodyArrayDeclaration(GrammarParser.BodyArrayDeclarationContext context){
+	public override object VisitBodyArrayDeclaration(FaParser.BodyArrayDeclarationContext context){
 		string id = context.ID().GetText();
 		
 //		int position = Convert.ToInt32( context.INTEGER().GetText() );
@@ -908,21 +908,21 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 
-	public override object VisitBody_returnBody(GrammarParser.Body_returnBodyContext context){
+	public override object VisitBody_returnBody(FaParser.Body_returnBodyContext context){
 		Visit(context.body());
 		return Visit(context.body_return());
 	}
 	
 	
-	public override object VisitBody_returnReturnregular(GrammarParser.Body_returnReturnregularContext context){
+	public override object VisitBody_returnReturnregular(FaParser.Body_returnReturnregularContext context){
 		return VisitReturn_regular(context.return_regular());
 	}
 
-	public override object VisitBody_RBC_Return(GrammarParser.Body_RBC_ReturnContext context) {
+	public override object VisitBody_RBC_Return(FaParser.Body_RBC_ReturnContext context) {
 		return VisitReturn_regular(context.return_regular());
 	}
 
-	public override object VisitBody_returnIfReturn(GrammarParser.Body_returnIfReturnContext context){
+	public override object VisitBody_returnIfReturn(FaParser.Body_returnIfReturnContext context){
 		object result = VisitIf_return(context.if_return());
 		if ( result == null){
 			result = Visit(context.body_return());
@@ -930,7 +930,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_IfBC(GrammarParser.Body_BC_IfBCContext context)
+	public override object VisitBody_BC_IfBC(FaParser.Body_BC_IfBCContext context)
 	{
 		object result = VisitIf_break_continue(context.if_break_continue());
 		if ( result == null){
@@ -939,7 +939,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_RBC_IfRBC(GrammarParser.Body_RBC_IfRBCContext context)
+	public override object VisitBody_RBC_IfRBC(FaParser.Body_RBC_IfRBCContext context)
 	{
 		object result = VisitIf_return_break_continue(context.if_return_break_continue());
 		if ( result == null){
@@ -948,7 +948,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_Body(GrammarParser.Body_BC_BodyContext context)
+	public override object VisitBody_BC_Body(FaParser.Body_BC_BodyContext context)
 	{	
 		object result = Visit(context.body());
 		if ( result == null){
@@ -957,7 +957,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_BC(GrammarParser.Body_BC_BCContext context)
+	public override object VisitBody_BC_BC(FaParser.Body_BC_BCContext context)
 	{
 		if (context.bc.Text == "interrumpir")
 		{
@@ -972,7 +972,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 	}
 
 
-	public override object VisitBody_RBC_BC(GrammarParser.Body_RBC_BCContext context)
+	public override object VisitBody_RBC_BC(FaParser.Body_RBC_BCContext context)
 	{
 		if (context.bc.Text == "interrumpir")
 		{
@@ -986,7 +986,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return Visit(context.body_return_break_continue());
 	}
 
-	public override object VisitBody_RBC_Body(GrammarParser.Body_RBC_BodyContext context)
+	public override object VisitBody_RBC_Body(FaParser.Body_RBC_BodyContext context)
 	{
 		object result = Visit(context.body());
 		if ( result == null){
@@ -995,7 +995,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_returWhileReturn(GrammarParser.Body_returWhileReturnContext context)
+	public override object VisitBody_returWhileReturn(FaParser.Body_returWhileReturnContext context)
 	{
 		object result = VisitWhile_return(context.while_return());
 		if ( result == null){
@@ -1004,7 +1004,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_returnSwitchReturn(GrammarParser.Body_returnSwitchReturnContext context)
+	public override object VisitBody_returnSwitchReturn(FaParser.Body_returnSwitchReturnContext context)
 	{
 		object result = VisitSwitch_return(context.switch_return());
 		if ( result == null){
@@ -1013,7 +1013,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_WhileRegular(GrammarParser.Body_BC_WhileRegularContext context)
+	public override object VisitBody_BC_WhileRegular(FaParser.Body_BC_WhileRegularContext context)
 	{
 		object result = VisitWhile_regular(context.while_regular());
 		if ( result == null){
@@ -1022,7 +1022,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_BC_SwitchBC(GrammarParser.Body_BC_SwitchBCContext context)
+	public override object VisitBody_BC_SwitchBC(FaParser.Body_BC_SwitchBCContext context)
 	{
 		object result = VisitSwitch_break_continue(context.switch_break_continue());
 		if ( result == null){
@@ -1031,7 +1031,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_RBC_WhileReturn(GrammarParser.Body_RBC_WhileReturnContext context)
+	public override object VisitBody_RBC_WhileReturn(FaParser.Body_RBC_WhileReturnContext context)
 	{
 		object result = VisitWhile_return(context.while_return());
 		if ( result == null){
@@ -1040,7 +1040,7 @@ public class MyVisitor : GrammarBaseVisitor<System.Object>{
 		return result;
 	}
 
-	public override object VisitBody_RBC_SwitchRBC(GrammarParser.Body_RBC_SwitchRBCContext context)
+	public override object VisitBody_RBC_SwitchRBC(FaParser.Body_RBC_SwitchRBCContext context)
 	{
 		object result = VisitSwitch_return_break_continue(context.switch_return_break_continue());
 		if ( result == null){

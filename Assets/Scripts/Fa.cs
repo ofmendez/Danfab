@@ -14,13 +14,13 @@ public class Fa : Singleton<Fa> {
 		// Debug.Log("Solicitado:  "+code);
 		CustomErrorListener errorListener = new CustomErrorListener(false);
 		AntlrInputStream inputStream = new AntlrInputStream(code);
-	    GrammarLexer GrammarLexer = new GrammarLexer(inputStream);
-	    CommonTokenStream commonTokenStream = new CommonTokenStream(GrammarLexer);
-	    GrammarParser parser = new GrammarParser(commonTokenStream);
+	    FaLexer FaLexer = new FaLexer(inputStream);
+	    CommonTokenStream commonTokenStream = new CommonTokenStream(FaLexer);
+	    FaParser parser = new FaParser(commonTokenStream);
 
 		parser.AddErrorListener(errorListener);
 
-	    GrammarParser.PrincipalContext context = parser.principal();
+	    FaParser.PrincipalContext context = parser.principal();
 	    MyVisitor loader = new MyVisitor();
 		loader.Visit(context);
 		

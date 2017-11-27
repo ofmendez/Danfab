@@ -1,4 +1,4 @@
-grammar Grammar;		
+grammar Fa;		
 
 principal : block ;
 

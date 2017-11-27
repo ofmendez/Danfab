@@ -21,6 +21,7 @@ public class TextEditorController  : MonoBehaviour {
 	}
 
 	void ChangeText(){
+		
 		inField.text = inField.text.Replace("si", "<color=\"#f92672\"><b>si</b></color>");
 	}
 	// public void AppendBlueText(string _t){

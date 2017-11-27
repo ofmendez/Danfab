@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/ofmendez/DataDocs/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Grammar.g4 by ANTLR 4.7
+// Generated from /home/ofmendez/DataDocs/Work/Ubuntu/LENGUAJES/Danfab/projectUnity/Danfab/Assets/Antlr4/Fa.g4 by ANTLR 4.7
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -32,7 +32,7 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.7")]
 [System.CLSCompliant(false)]
-public partial class GrammarParser : Parser {
+public partial class FaParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
@@ -86,22 +86,22 @@ public partial class GrammarParser : Parser {
 		}
 	}
 
-	public override string GrammarFileName { get { return "Grammar.g4"; } }
+	public override string GrammarFileName { get { return "Fa.g4"; } }
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
 	public override string SerializedAtn { get { return new string(_serializedATN); } }
 
-	static GrammarParser() {
+	static FaParser() {
 		decisionToDFA = new DFA[_ATN.NumberOfDecisions];
 		for (int i = 0; i < _ATN.NumberOfDecisions; i++) {
 			decisionToDFA[i] = new DFA(_ATN.GetDecisionState(i), i);
 		}
 	}
 
-		public GrammarParser(ITokenStream input) : this(input, Console.Out, Console.Error) { }
+		public FaParser(ITokenStream input) : this(input, Console.Out, Console.Error) { }
 
-		public GrammarParser(ITokenStream input, TextWriter output, TextWriter errorOutput)
+		public FaParser(ITokenStream input, TextWriter output, TextWriter errorOutput)
 		: base(input, output, errorOutput)
 	{
 		Interpreter = new ParserATNSimulator(this, _ATN, decisionToDFA, sharedContextCache);
@@ -116,7 +116,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_principal; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPrincipal(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -168,7 +168,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_block; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -236,7 +236,7 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class Function_callContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ExpressionContext[] expression() {
 			return GetRuleContexts<ExpressionContext>();
 		}
@@ -249,7 +249,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_function_call; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunction_call(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -310,7 +310,7 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class ArrayPositionContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
@@ -320,7 +320,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_arrayPosition; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitArrayPosition(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -359,7 +359,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_print; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPrint(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -388,14 +388,14 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class ArraysizeContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ArraysizeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_arraysize; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitArraysize(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -443,7 +443,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_if_regular; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIf_regular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -520,7 +520,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_if_return; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIf_return(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -597,7 +597,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_if_break_continue; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIf_break_continue(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -674,7 +674,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_if_return_break_continue; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIf_return_break_continue(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -733,7 +733,7 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class Switch_regularContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public DataTypeContext[] dataType() {
 			return GetRuleContexts<DataTypeContext>();
 		}
@@ -752,7 +752,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_switch_regular; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSwitch_regular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -810,7 +810,7 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class Switch_returnContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public DataTypeContext[] dataType() {
 			return GetRuleContexts<DataTypeContext>();
 		}
@@ -829,7 +829,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_switch_return; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSwitch_return(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -887,7 +887,7 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class Switch_break_continueContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public DataTypeContext[] dataType() {
 			return GetRuleContexts<DataTypeContext>();
 		}
@@ -906,7 +906,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_switch_break_continue; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSwitch_break_continue(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -964,7 +964,7 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class Switch_return_break_continueContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public DataTypeContext[] dataType() {
 			return GetRuleContexts<DataTypeContext>();
 		}
@@ -983,7 +983,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_switch_return_break_continue; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSwitch_return_break_continue(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1053,7 +1053,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_while_regular; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitWhile_regular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1097,7 +1097,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_while_return; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitWhile_return(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1129,9 +1129,9 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class FunctionContext : ParserRuleContext {
-		public ITerminalNode[] ID() { return GetTokens(GrammarParser.ID); }
+		public ITerminalNode[] ID() { return GetTokens(FaParser.ID); }
 		public ITerminalNode ID(int i) {
-			return GetToken(GrammarParser.ID, i);
+			return GetToken(FaParser.ID, i);
 		}
 		public Body_returnContext body_return() {
 			return GetRuleContext<Body_returnContext>(0);
@@ -1142,7 +1142,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_function; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunction(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1224,13 +1224,13 @@ public partial class GrammarParser : Parser {
 		}
 		public BodyPrintContext(BodyContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBodyPrint(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 	public partial class BodyArrayPositionContext : BodyContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ExpressionContext[] expression() {
 			return GetRuleContexts<ExpressionContext>();
 		}
@@ -1239,31 +1239,31 @@ public partial class GrammarParser : Parser {
 		}
 		public BodyArrayPositionContext(BodyContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBodyArrayPosition(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 	public partial class BodyAssignVariableContext : BodyContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
 		public BodyAssignVariableContext(BodyContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBodyAssignVariable(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 	public partial class BodyArrayDeclarationContext : BodyContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
 		public BodyArrayDeclarationContext(BodyContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBodyArrayDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1274,7 +1274,7 @@ public partial class GrammarParser : Parser {
 		}
 		public BodyFunctionCallContext(BodyContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBodyFunctionCall(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1360,7 +1360,7 @@ public partial class GrammarParser : Parser {
 	public partial class Body_regularEpsilonContext : Body_regularContext {
 		public Body_regularEpsilonContext(Body_regularContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_regularEpsilon(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1374,7 +1374,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_regularSwRegularContext(Body_regularContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_regularSwRegular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1388,7 +1388,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_regularBodyContext(Body_regularContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_regularBody(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1402,7 +1402,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_regularWhileRegularContext(Body_regularContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_regularWhileRegular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1416,7 +1416,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_regularIfRegularContext(Body_regularContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_regularIfRegular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1510,7 +1510,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_returnIfReturnContext(Body_returnContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_returnIfReturn(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1518,7 +1518,7 @@ public partial class GrammarParser : Parser {
 	public partial class Body_returnEpsilonContext : Body_returnContext {
 		public Body_returnEpsilonContext(Body_returnContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_returnEpsilon(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1532,7 +1532,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_returnBodyContext(Body_returnContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_returnBody(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1546,7 +1546,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_returnSwitchReturnContext(Body_returnContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_returnSwitchReturn(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1560,7 +1560,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_returnReturnregularContext(Body_returnContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_returnReturnregular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1574,7 +1574,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_returWhileReturnContext(Body_returnContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_returWhileReturn(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1665,7 +1665,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_return_regular; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitReturn_regular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1736,7 +1736,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_BC_SwitchBCContext(Body_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_BC_SwitchBC(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1750,7 +1750,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_BC_WhileRegularContext(Body_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_BC_WhileRegular(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1762,7 +1762,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_BC_BCContext(Body_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_BC_BC(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1776,7 +1776,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_BC_BodyContext(Body_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_BC_Body(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1784,7 +1784,7 @@ public partial class GrammarParser : Parser {
 	public partial class Body_BC_EpsilonContext : Body_break_continueContext {
 		public Body_BC_EpsilonContext(Body_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_BC_Epsilon(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1798,7 +1798,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_BC_IfBCContext(Body_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_BC_IfBC(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1911,7 +1911,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_RBC_BodyContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_Body(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1925,7 +1925,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_RBC_ReturnContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_Return(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1933,7 +1933,7 @@ public partial class GrammarParser : Parser {
 	public partial class Body_RBC_EpsilonContext : Body_return_break_continueContext {
 		public Body_RBC_EpsilonContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_Epsilon(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1945,7 +1945,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_RBC_BCContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_BC(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1959,7 +1959,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_RBC_WhileReturnContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_WhileReturn(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1973,7 +1973,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_RBC_SwitchRBCContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_SwitchRBC(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1987,7 +1987,7 @@ public partial class GrammarParser : Parser {
 		}
 		public Body_RBC_IfRBCContext(Body_return_break_continueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBody_RBC_IfRBC(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2097,7 +2097,7 @@ public partial class GrammarParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_expression; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2142,7 +2142,7 @@ public partial class GrammarParser : Parser {
 		}
 		public ExpressionContentFunctionCallContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentFunctionCall(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2154,11 +2154,11 @@ public partial class GrammarParser : Parser {
 		public ExpressionContentContext expressionContent(int i) {
 			return GetRuleContext<ExpressionContentContext>(i);
 		}
-		public ITerminalNode SUM() { return GetToken(GrammarParser.SUM, 0); }
-		public ITerminalNode NEGATIVE() { return GetToken(GrammarParser.NEGATIVE, 0); }
+		public ITerminalNode SUM() { return GetToken(FaParser.SUM, 0); }
+		public ITerminalNode NEGATIVE() { return GetToken(FaParser.NEGATIVE, 0); }
 		public ExpressionContentSumOrNegContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentSumOrNeg(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2170,10 +2170,10 @@ public partial class GrammarParser : Parser {
 		public ExpressionContentContext expressionContent(int i) {
 			return GetRuleContext<ExpressionContentContext>(i);
 		}
-		public ITerminalNode RELATIONAL() { return GetToken(GrammarParser.RELATIONAL, 0); }
+		public ITerminalNode RELATIONAL() { return GetToken(FaParser.RELATIONAL, 0); }
 		public ExpressionContentRelationalContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentRelational(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2185,10 +2185,10 @@ public partial class GrammarParser : Parser {
 		public ExpressionContentContext expressionContent(int i) {
 			return GetRuleContext<ExpressionContentContext>(i);
 		}
-		public ITerminalNode EQUALITY_NUMERIC() { return GetToken(GrammarParser.EQUALITY_NUMERIC, 0); }
+		public ITerminalNode EQUALITY_NUMERIC() { return GetToken(FaParser.EQUALITY_NUMERIC, 0); }
 		public ExpressionContentequalityContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentequality(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2200,19 +2200,19 @@ public partial class GrammarParser : Parser {
 		public ExpressionContentContext expressionContent(int i) {
 			return GetRuleContext<ExpressionContentContext>(i);
 		}
-		public ITerminalNode OR() { return GetToken(GrammarParser.OR, 0); }
+		public ITerminalNode OR() { return GetToken(FaParser.OR, 0); }
 		public ExpressionContentContentOrContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentContentOr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 	public partial class ExpressionContentIDContext : ExpressionContentContext {
-		public ITerminalNode ID() { return GetToken(GrammarParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(FaParser.ID, 0); }
 		public ExpressionContentIDContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentID(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2223,7 +2223,7 @@ public partial class GrammarParser : Parser {
 		}
 		public ExpressionContentArraySizeContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentArraySize(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2235,22 +2235,22 @@ public partial class GrammarParser : Parser {
 		public ExpressionContentContext expressionContent(int i) {
 			return GetRuleContext<ExpressionContentContext>(i);
 		}
-		public ITerminalNode MUL() { return GetToken(GrammarParser.MUL, 0); }
+		public ITerminalNode MUL() { return GetToken(FaParser.MUL, 0); }
 		public ExpressionContentMulContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentMul(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 	public partial class ExpressionContentNegativeContext : ExpressionContentContext {
-		public ITerminalNode NEGATIVE() { return GetToken(GrammarParser.NEGATIVE, 0); }
+		public ITerminalNode NEGATIVE() { return GetToken(FaParser.NEGATIVE, 0); }
 		public ExpressionContentContext expressionContent() {
 			return GetRuleContext<ExpressionContentContext>(0);
 		}
 		public ExpressionContentNegativeContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentNegative(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2261,7 +2261,7 @@ public partial class GrammarParser : Parser {
 		}
 		public ExpressionContentParenthesisContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentParenthesis(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2272,7 +2272,7 @@ public partial class GrammarParser : Parser {
 		}
 		public ExpressionContentArrayPositionContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentArrayPosition(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2284,10 +2284,10 @@ public partial class GrammarParser : Parser {
 		public ExpressionContentContext expressionContent(int i) {
 			return GetRuleContext<ExpressionContentContext>(i);
 		}
-		public ITerminalNode AND() { return GetToken(GrammarParser.AND, 0); }
+		public ITerminalNode AND() { return GetToken(FaParser.AND, 0); }
 		public ExpressionContentAndContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentAnd(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2298,19 +2298,19 @@ public partial class GrammarParser : Parser {
 		}
 		public ExpressionContentdataTypeContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentdataType(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 	public partial class ExpressionContentNotContext : ExpressionContentContext {
-		public ITerminalNode NOT() { return GetToken(GrammarParser.NOT, 0); }
+		public ITerminalNode NOT() { return GetToken(FaParser.NOT, 0); }
 		public ExpressionContentContext expressionContent() {
 			return GetRuleContext<ExpressionContentContext>(0);
 		}
 		public ExpressionContentNotContext(ExpressionContentContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionContentNot(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -2508,18 +2508,18 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class DataTypeContext : ParserRuleContext {
-		public ITerminalNode INTEGER() { return GetToken(GrammarParser.INTEGER, 0); }
-		public ITerminalNode DOUBLE() { return GetToken(GrammarParser.DOUBLE, 0); }
-		public ITerminalNode STRING() { return GetToken(GrammarParser.STRING, 0); }
-		public ITerminalNode TRUE() { return GetToken(GrammarParser.TRUE, 0); }
-		public ITerminalNode FALSE() { return GetToken(GrammarParser.FALSE, 0); }
+		public ITerminalNode INTEGER() { return GetToken(FaParser.INTEGER, 0); }
+		public ITerminalNode DOUBLE() { return GetToken(FaParser.DOUBLE, 0); }
+		public ITerminalNode STRING() { return GetToken(FaParser.STRING, 0); }
+		public ITerminalNode TRUE() { return GetToken(FaParser.TRUE, 0); }
+		public ITerminalNode FALSE() { return GetToken(FaParser.FALSE, 0); }
 		public DataTypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_dataType; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			IFaVisitor<TResult> typedVisitor = visitor as IFaVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitDataType(this);
 			else return visitor.VisitChildren(this);
 		}
