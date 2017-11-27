@@ -35,6 +35,7 @@ public class ViewController : Singleton< ViewController> {
 
 	public void LaunchLevel(int _l){
 		levels[_l-1].gameObject.SetActive(true);
+		levels[_l-1].SetupLevel();
 		actualLevel = levels[_l-1];
 	}
 

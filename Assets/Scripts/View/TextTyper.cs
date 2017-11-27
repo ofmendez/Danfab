@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
- using UnityEngine.UI;
- using System.Collections;
- using System.Collections.Generic;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
  
- public class TextTyper : MonoBehaviour {
+public class TextTyper : MonoBehaviour {
  
      public float letterPause = 0.2f;
      public float waitTime = 3;
@@ -15,10 +15,11 @@
  
      // Use this for initialization
      void OnEnable () {
-         textComp = GetComponent<Text>();
-         message = textComp.text;
-         textComp.text = "";
-         StartCoroutine(TypeText ());
+        StopAllCoroutines();
+        textComp = textComp? textComp : GetComponent<Text>();
+        message = textComp.text;
+        textComp.text = "";
+        StartCoroutine(TypeText ());
      }
  
 

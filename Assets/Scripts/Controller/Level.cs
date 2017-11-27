@@ -6,14 +6,23 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour {
 
-	public GameObject patternScreen;
+	PatternScreen patternScreen;
 	public InputField editor;
 	public int levelNumber =0;
 	public bool testWithArrays;
 	public bool testWithArraysInitialized;
 
 	void Start () {
-		patternScreen.SetActive(true);
+		patternScreen  = GetComponentInChildren<PatternScreen>(true);
+		patternScreen.gameObject.SetActive(true);
+		patternScreen.FirstLaunch();
+	}
+
+	public void SetupLevel(){
+		patternScreen  =patternScreen?patternScreen: GetComponentInChildren<PatternScreen>(true);
+		patternScreen.gameObject.SetActive(true);
+		patternScreen.FirstLaunch();
+		
 	}
 
 	public void TestLevel (){
